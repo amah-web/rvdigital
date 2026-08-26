@@ -1,90 +1,250 @@
 ```html
-<!-- ... existing code ... -->
-<body class="bg-gray-100 text-gray-800 font-sans pb-20">
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RV Digital - Katalog Produk</title>
+    <!-- Mengimpor Tailwind CSS untuk desain web yang cepat dan responsif -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- CSS Tambahan untuk Animasi Popup Notifikasi -->
+    <style>
+        @keyframes slideIn {
+            from { transform: translateX(-150%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(-150%); opacity: 0; }
+        }
+        .popup-enter {
+            animation: slideIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        .popup-exit {
+            animation: slideOut 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        /* Memastikan gambar produk memiliki rasio yang seragam */
+        .product-img {
+            aspect-ratio: 16/9;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
 
-    <!-- Header / Navigasi -->
-    <header class="bg-white shadow-sm mb-8 sticky top-0 z-40">
+    <!-- BAGIAN 1: HEADER & NAVIGASI -->
+    <header class="bg-white shadow-sm sticky top-0 z-40">
         <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
             <!-- Kiri: Logo & Brand -->
             <div class="flex items-center gap-2 cursor-pointer">
                 <div class="bg-blue-600 text-white p-2 rounded-lg font-bold text-xl leading-none">RV</div>
-                <span class="text-xl font-bold text-gray-800">RV Digital</span>
+                <span class="text-xl font-bold text-gray-800 tracking-tight">RV Digital</span>
             </div>
-            <!-- Kanan: Menu -->
+            <!-- Kanan: Menu Navigasi Desktop -->
             <nav class="hidden md:flex gap-6 text-gray-600 font-medium">
                 <a href="#" class="hover:text-blue-600 transition">Home</a>
                 <a href="#" class="hover:text-blue-600 transition">Blog</a>
                 <a href="#" class="hover:text-blue-600 transition">Login</a>
             </nav>
-            <!-- Menu Mobile (Ikon hamburger untuk tampilan HP) -->
-            <button class="md:hidden text-gray-600 focus:outline-none">
+            <!-- Tombol Menu Mobile (Hanya muncul di HP) -->
+            <button class="md:hidden text-gray-600 hover:text-blue-600 focus:outline-none">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
             </button>
         </div>
     </header>
 
-    <!-- Judul Toko -->
-    <div class="max-w-6xl mx-auto px-4 text-center mb-8">
-        <h1 class="text-3xl font-bold text-blue-600">Katalog Produk</h1>
-        <p class="text-gray-500 mt-2">Pilih dan dapatkan produk digital terbaik kami.</p>
-    </div>
+    <!-- BAGIAN 2: KONTEN UTAMA (Katalog Produk) -->
+    <main class="flex-grow w-full max-w-6xl mx-auto px-4 py-10">
+        <!-- Judul Katalog -->
+        <div class="text-center mb-10">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">Katalog Produk Digital</h1>
+            <p class="text-gray-500 max-w-2xl mx-auto">Tingkatkan produktivitas dan omset bisnis Anda dengan koleksi produk digital terbaik dari RV Digital.</p>
+        </div>
 
-    <!-- Wadah Katalog Produk -->
-<!-- ... existing code ... -->
-        <!-- Grid layout: 1 kolom di HP, 2 di Tablet, 3 di Desktop -->
-        <div id="product-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Produk akan dimuat di sini oleh JavaScript -->
+        <!-- Wadah Grid Produk (Otomatis menyesuaikan layar) -->
+        <div id="product-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Produk akan dimuat secara otomatis oleh JavaScript di sini -->
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-white border-t border-gray-200 mt-16 py-8">
-        <div class="max-w-6xl mx-auto px-4 text-center flex flex-col items-center">
+    <!-- BAGIAN 3: FOOTER -->
+    <footer class="bg-white border-t border-gray-200 mt-auto py-8">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col items-center">
             <div class="text-2xl font-bold text-gray-800 mb-2">RV Digital</div>
-            <p class="text-gray-500 text-sm">&copy; 2026 RV Digital. Hak Cipta Dilindungi.</p>
+            <p class="text-gray-500 text-sm text-center">&copy; 2026 RV Digital. Hak Cipta Dilindungi.</p>
         </div>
     </footer>
 
-    <!-- Elemen Popup Notifikasi Pembelian (Disembunyikan secara default) -->
-    <div id="sales-popup" class="fixed bottom-4 left-4 bg-white p-4 rounded-lg shadow-xl border-l-4 border-green-500 z-50 flex items-center gap-3 max-w-sm opacity-0 pointer-events-none" style="transform: translateX(-150%);">
-        <div class="bg-green-100 text-green-600 p-2 rounded-full">
-            <!-- Ikon Centang -->
+    <!-- BAGIAN 4: ELEMEN POPUP NOTIFIKASI -->
+    <!-- Elemen ini disembunyikan di luar layar kiri pada awalnya -->
+    <div id="sales-popup" class="fixed bottom-4 left-4 bg-white p-4 rounded-lg shadow-2xl border-l-4 border-blue-500 z-50 flex items-center gap-4 max-w-sm opacity-0 pointer-events-none" style="transform: translateX(-150%);">
+        <!-- Ikon Tas Belanja -->
+        <div class="bg-blue-50 text-blue-600 p-2.5 rounded-full shrink-0">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
             </svg>
         </div>
+        <!-- Teks Notifikasi -->
         <div>
-            <p class="text-sm text-gray-800 leading-tight">
+            <p class="text-sm text-gray-800 leading-snug">
                 <span id="popup-name" class="font-bold">A***i</span> telah membeli <br>
-                <span id="popup-product" class="font-bold text-blue-600">Nama Produk</span>
+                <span id="popup-product" class="font-bold text-blue-600 line-clamp-1">Nama Produk</span>
             </p>
             <p class="text-xs text-gray-400 mt-1">Beberapa saat yang lalu</p>
         </div>
     </div>
 
-    <!-- Script JavaScript untuk memuat produk dan menjalankan popup -->
-<!-- ... existing code ... -->
-            card.innerHTML = `
+    <!-- BAGIAN 5: JAVASCRIPT (Logika, Data Produk, & Data Pembeli) -->
+    <script>
+        // ==============================================================
+        // 🛠️ AREA PENGATURAN: KAMU BISA MENGEDIT DATA DI BAWAH INI 🛠️
+        // ==============================================================
+
+        // 1. DATA NAMA PEMBELI (Untuk popup notifikasi)
+        // Tambahkan atau ganti nama-nama di bawah ini sesuai keinginanmu.
+        const daftarPembeli = [
+            "Budi", "Andi", "Siti", "Ayu", "Joko", "Rina", "Agus", 
+            "Dewi", "Fajar", "Hendra", "Reza", "Siska", "Tari", "Bayu"
+        ];
+
+        // 2. DATA PRODUK (Untuk ditampilkan di katalog)
+        // Cara menambah produk baru: 
+        // Salin (copy) satu blok kurung kurawal { ... }, beri koma, lalu tempel (paste) di bawahnya.
+        const produkKatalog = [
+            {
+                title: "RV Digital Members Affiliate",
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", 
+                detailLink: "https://rvdigitalmembers.vercel.app/affiliate?ref=RAYN482",
+                checkoutLink: "https://rvdigitalmembers.vercel.app/?checkout=8a949ff2-f897-4fce-8797-d2dfc4edade5&ref=RAYN482"
+            },
+            {
+                title: "Tips Rezeki",
+                image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                detailLink: "https://raindigital.vercel.app/tips-rezeki?ref=RAYN482",
+                checkoutLink: "https://rvdigitalmembers.vercel.app/?checkout=5ab8e726-6ee3-48d0-8c99-8247c73b3162&ref=RAYN482"
+            },
+            {
+                title: "Template Desain Medsos",
+                image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                detailLink: "#",
+                checkoutLink: "#"
+            },
+            {
+                title: "Ebook Jago Copywriting",
+                image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                detailLink: "#",
+                checkoutLink: "#"
+            },
+            {
+                title: "Kelas Mahir Canva",
+                image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                detailLink: "#",
+                checkoutLink: "#"
+            },
+            {
+                title: "Kumpulan Prompt AI Master",
+                image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                detailLink: "#",
+                checkoutLink: "#"
+            },
+            {
+                title: "Script Video Pendek TikTok",
+                image: "https://images.unsplash.com/photo-1611162616475-46b635cb6868?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                detailLink: "#",
+                checkoutLink: "#"
+            },
+            {
+                title: "Rahasia FYP Instagram",
+                image: "https://images.unsplash.com/photo-1611262588024-d12430b98920?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                detailLink: "#",
+                checkoutLink: "#"
+            },
+            {
+                title: "Panduan Iklan Facebook",
+                image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                detailLink: "#",
+                checkoutLink: "#"
+            }
+        ];
+
+        // ==============================================================
+        // ⚙️ SISTEM & LOGIKA (Tidak perlu diubah) ⚙️
+        // ==============================================================
+
+        // --- A. Menampilkan Produk ke Halaman ---
+        const penampungProduk = document.getElementById('product-container');
+        
+        produkKatalog.forEach(produk => {
+            const kartu = document.createElement('div');
+            kartu.className = "bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-1";
+            
+            kartu.innerHTML = `
                 <!-- Gambar Produk -->
-                <img src="${product.image}" alt="${product.title}" class="w-full h-48 object-cover">
-                
-                <!-- Judul Produk -->
-                <div class="p-4 flex-grow">
-                    <h2 class="text-lg font-bold text-gray-800">${product.title}</h2>
+                <div class="relative overflow-hidden bg-gray-100">
+                    <img src="${produk.image}" alt="${produk.title}" class="w-full product-img transition-transform duration-500 hover:scale-105" loading="lazy">
                 </div>
                 
-                <!-- Tombol Aksi -->
-                <!-- Perhatikan: Tidak ada target="_blank" di link <a> ini, jadi akan terbuka di tab yang sama -->
-                <div class="p-4 bg-gray-50 border-t border-gray-100 flex gap-3">
-                    <a href="${product.salespage}" class="flex-1 text-center bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold transition">
+                <!-- Judul Produk -->
+                <div class="p-5 flex-grow">
+                    <h2 class="text-lg font-bold text-gray-800 leading-tight">${produk.title}</h2>
+                </div>
+                
+                <!-- Tombol Aksi (Detail & Checkout) -->
+                <!-- Catatan: Link tidak memakai target="_blank" agar terbuka di tab yang sama -->
+                <div class="p-5 pt-0 mt-auto flex gap-3">
+                    <a href="${produk.detailLink}" class="flex-1 text-center bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2.5 rounded-xl text-sm font-semibold transition-colors">
                         Detail
                     </a>
-                    <a href="${product.checkout}" class="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-semibold shadow transition">
+                    <a href="${produk.checkoutLink}" class="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-xl text-sm font-semibold shadow-sm transition-colors">
                         Checkout
                     </a>
                 </div>
             `;
-            container.appendChild(card);
-<!-- ... existing code ... -->
+            penampungProduk.appendChild(kartu);
+        });
+
+        // --- B. Logika Popup Notifikasi ---
+        const elemenPopup = document.getElementById('sales-popup');
+        const teksNamaPopup = document.getElementById('popup-name');
+        const teksProdukPopup = document.getElementById('popup-product');
+
+        // Fungsi menyensor nama (Contoh: "Reza" -> "R**a")
+        function sensorNama(nama) {
+            if (nama.length <= 2) return nama[0] + "*";
+            return nama[0] + "*".repeat(nama.length - 2) + nama[nama.length - 1];
+        }
+
+        // Fungsi memunculkan notifikasi secara acak
+        function jalankanPopup() {
+            // Pilih nama dan produk acak dari daftar yang sudah kamu buat di atas
+            const namaAcak = daftarPembeli[Math.floor(Math.random() * daftarPembeli.length)];
+            const produkAcak = produkKatalog[Math.floor(Math.random() * produkKatalog.length)].title;
+
+            // Masukkan ke dalam HTML
+            teksNamaPopup.textContent = sensorNama(namaAcak);
+            teksProdukPopup.textContent = produkAcak;
+
+            // Tampilkan animasi masuk
+            elemenPopup.classList.remove('popup-exit');
+            elemenPopup.classList.add('popup-enter');
+
+            // Sembunyikan animasi keluar setelah 5 detik
+            setTimeout(() => {
+                elemenPopup.classList.remove('popup-enter');
+                elemenPopup.classList.add('popup-exit');
+            }, 5000);
+        }
+
+        // Mulai jalankan popup pertama setelah 4 detik halaman dibuka
+        setTimeout(() => {
+            jalankanPopup();
+            // Ulangi terus setiap 15 detik
+            setInterval(jalankanPopup, 15000);
+        }, 4000);
+
+    </script>
+</body>
+</html>
 
 ```
