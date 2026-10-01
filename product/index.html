@@ -1,11 +1,31 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biolink Digital Affiliate</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        purpleTheme: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                            950: '#2e1065',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Google Fonts Inter -->
@@ -13,6 +33,7 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         /* Custom scrollbar for horizontal tabs */
         .no-scrollbar::-webkit-scrollbar {
@@ -22,134 +43,175 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
-        /* Glassmorphism & Soft shadows */
-        .card-shadow {
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        /* Neumorphic & Retro Neo-brutalism Shadow */
+        .border-shadow-purple {
+            border: 2px solid #2e1065;
+            box-shadow: 4px 4px 0px #2e1065;
         }
-        .border-shadow {
-            border: 2px solid #1f2937;
-            box-shadow: 4px 4px 0px #1f2937;
+        .border-shadow-light {
+            border: 2px solid #4c1d95;
+            box-shadow: 4px 4px 0px #6d28d9;
+        }
+        /* Fade animation for sales notification toast */
+        @keyframes slideUp {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .animate-toast {
+            animation: slideUp 0.4s ease-out forwards;
         }
     </style>
 </head>
-<body class="bg-[#4ec5d4] min-h-screen text-gray-800 pb-16">
+<body id="appBody" class="bg-gradient-to-br from-slate-950 via-purple-950 to-indigo-950 min-h-screen text-slate-100 pb-20 selection:bg-purple-500 selection:text-white">
+
+    <!-- Theme Toggle Button (Dark / Light Mode) -->
+    <div class="max-w-md mx-auto pt-4 px-4 flex justify-between items-center">
+        <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-purple-900/50 text-purple-200 border border-purple-700/50 backdrop-blur-sm">
+            <i class="fa-solid fa-sparkles text-amber-400 mr-1"></i> Digital Store
+        </span>
+        <button onclick="toggleTheme()" class="px-3 py-1.5 bg-white/10 hover:bg-white/20 text-xs font-medium rounded-full backdrop-blur-md border border-white/20 transition flex items-center gap-1.5 shadow-sm">
+            <i id="themeIcon" class="fa-solid fa-sun text-amber-400"></i>
+            <span id="themeLabel">Mode Terang</span>
+        </button>
+    </div>
 
     <!-- Profile & Header Section -->
-    <header class="max-w-md mx-auto pt-8 px-4 text-center">
+    <header class="max-w-md mx-auto pt-4 px-4 text-center">
         <!-- Avatar -->
         <div class="relative w-28 h-28 mx-auto mb-4">
             <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" 
                  alt="Foto Profil" 
-                 class="w-full h-full object-cover rounded-full border-4 border-white shadow-lg">
-            <div class="absolute bottom-0 right-0 bg-green-500 w-6 h-6 rounded-full border-2 border-white flex items-center justify-center text-white text-xs" title="Online">
+                 class="w-full h-full object-cover rounded-full border-4 border-purple-400/80 shadow-xl shadow-purple-950/50">
+            <div class="absolute bottom-0 right-0 bg-emerald-500 w-6 h-6 rounded-full border-2 border-white flex items-center justify-center text-white text-xs shadow" title="Verified Creator">
                 <i class="fa-solid fa-check"></i>
             </div>
         </div>
 
         <!-- Bio Details -->
-        <h1 class="text-2xl font-bold text-gray-900 tracking-tight drop-shadow-sm">Robi Affiliate Digital</h1>
-        <p class="text-sm font-medium text-gray-800 mt-1 max-w-xs mx-auto leading-relaxed opacity-90">
-            Rekomendasi Ebook, Kursus Online, & Tools Digital Terbaik untuk Scale-up Bisnis Kamu 🚀
+        <h1 class="text-2xl font-extrabold text-white tracking-tight drop-shadow-md" id="bioTitle">Robi Affiliate Digital</h1>
+        <p class="text-xs sm:text-sm font-medium text-purple-200/90 mt-1.5 max-w-xs mx-auto leading-relaxed" id="bioDesc">
+            Rekomendasi Ebook, E-Course, & Tools Digital Terbaik untuk Melipatgandakan Cuan Bisnis Kamu 🚀
         </p>
 
         <!-- Social Media Buttons -->
-        <div class="flex items-center justify-center gap-3 mt-5 flex-wrap">
+        <div class="flex items-center justify-center gap-2.5 mt-5 flex-wrap">
             <!-- WhatsApp -->
-            <a href="https://wa.me/" target="_blank" class="w-10 h-10 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full flex items-center justify-center text-lg shadow-md hover:scale-110 transition-transform" title="WhatsApp">
+            <a href="https://wa.me/6281234567890" target="_self" class="w-10 h-10 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full flex items-center justify-center text-lg shadow-lg hover:scale-110 active:scale-95 transition-all" title="WhatsApp">
                 <i class="fa-brands fa-whatsapp"></i>
             </a>
             <!-- Telegram -->
-            <a href="https://t.me/" target="_blank" class="w-10 h-10 bg-sky-500 hover:bg-sky-600 text-white rounded-full flex items-center justify-center text-lg shadow-md hover:scale-110 transition-transform" title="Telegram">
+            <a href="https://t.me/username" target="_self" class="w-10 h-10 bg-sky-500 hover:bg-sky-400 text-white rounded-full flex items-center justify-center text-lg shadow-lg hover:scale-110 active:scale-95 transition-all" title="Telegram">
                 <i class="fa-brands fa-telegram"></i>
             </a>
             <!-- TikTok -->
-            <a href="https://tiktok.com/" target="_blank" class="w-10 h-10 bg-black hover:bg-gray-800 text-white rounded-full flex items-center justify-center text-lg shadow-md hover:scale-110 transition-transform" title="TikTok">
+            <a href="https://tiktok.com/@username" target="_self" class="w-10 h-10 bg-slate-900 hover:bg-slate-800 border border-slate-700 text-white rounded-full flex items-center justify-center text-lg shadow-lg hover:scale-110 active:scale-95 transition-all" title="TikTok">
                 <i class="fa-brands fa-tiktok"></i>
             </a>
             <!-- YouTube -->
-            <a href="https://youtube.com/" target="_blank" class="w-10 h-10 bg-red-600 hover:bg-red-700 text-white rounded-full flex items-center justify-center text-lg shadow-md hover:scale-110 transition-transform" title="YouTube">
+            <a href="https://youtube.com/@username" target="_self" class="w-10 h-10 bg-red-600 hover:bg-red-500 text-white rounded-full flex items-center justify-center text-lg shadow-lg hover:scale-110 active:scale-95 transition-all" title="YouTube">
                 <i class="fa-brands fa-youtube"></i>
             </a>
             <!-- Instagram -->
-            <a href="https://instagram.com/" target="_blank" class="w-10 h-10 bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 text-white rounded-full flex items-center justify-center text-lg shadow-md hover:scale-110 transition-transform" title="Instagram">
+            <a href="https://instagram.com/username" target="_self" class="w-10 h-10 bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 text-white rounded-full flex items-center justify-center text-lg shadow-lg hover:scale-110 active:scale-95 transition-all" title="Instagram">
                 <i class="fa-brands fa-instagram"></i>
             </a>
             <!-- Facebook -->
-            <a href="https://facebook.com/" target="_blank" class="w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white rounded-full flex items-center justify-center text-lg shadow-md hover:scale-110 transition-transform" title="Facebook">
+            <a href="https://facebook.com/username" target="_self" class="w-10 h-10 bg-blue-600 hover:bg-blue-500 text-white rounded-full flex items-center justify-center text-lg shadow-lg hover:scale-110 active:scale-95 transition-all" title="Facebook">
                 <i class="fa-brands fa-facebook-f"></i>
             </a>
         </div>
     </header>
 
-    <!-- Sticky Navigation Tabs -->
-    <nav class="sticky top-0 z-30 mt-6 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-200">
-        <div class="max-w-md mx-auto flex items-center overflow-x-auto no-scrollbar px-2 text-sm font-semibold text-gray-600">
-            <button onclick="switchTab('all')" id="tab-all" class="tab-btn px-4 py-3 whitespace-nowrap border-b-2 border-teal-600 text-teal-700 font-bold transition-colors">
+    <!-- Navigation Tabs (Multipage concept) -->
+    <nav class="sticky top-0 z-30 mt-6 bg-purple-950/80 dark:bg-purple-950/90 backdrop-blur-md shadow-lg border-y border-purple-800/40">
+        <div class="max-w-md mx-auto flex items-center overflow-x-auto no-scrollbar px-2 text-xs font-semibold text-purple-200">
+            <button onclick="switchTab('all')" id="tab-all" class="tab-btn px-3.5 py-3.5 whitespace-nowrap border-b-2 border-purple-400 text-white font-bold transition-all">
                 Home
             </button>
-            <button onclick="switchTab('gratis')" id="tab-gratis" class="tab-btn px-4 py-3 whitespace-nowrap border-b-2 border-transparent hover:text-teal-600 transition-colors">
+            <button onclick="switchTab('gratis')" id="tab-gratis" class="tab-btn px-3.5 py-3.5 whitespace-nowrap border-b-2 border-transparent text-purple-300 hover:text-white transition-all">
                 Gratis
             </button>
-            <button onclick="switchTab('ebook')" id="tab-ebook" class="tab-btn px-4 py-3 whitespace-nowrap border-b-2 border-transparent hover:text-teal-600 transition-colors">
+            <button onclick="switchTab('ebook')" id="tab-ebook" class="tab-btn px-3.5 py-3.5 whitespace-nowrap border-b-2 border-transparent text-purple-300 hover:text-white transition-all">
                 Ebook
             </button>
-            <button onclick="switchTab('produk-digital')" id="tab-produk-digital" class="tab-btn px-4 py-3 whitespace-nowrap border-b-2 border-transparent hover:text-teal-600 transition-colors">
+            <button onclick="switchTab('produk-digital')" id="tab-produk-digital" class="tab-btn px-3.5 py-3.5 whitespace-nowrap border-b-2 border-transparent text-purple-300 hover:text-white transition-all">
                 Produk Digital
             </button>
-            <button onclick="switchTab('konten-kreator')" id="tab-konten-kreator" class="tab-btn px-4 py-3 whitespace-nowrap border-b-2 border-transparent hover:text-teal-600 transition-colors">
+            <button onclick="switchTab('konten-kreator')" id="tab-konten-kreator" class="tab-btn px-3.5 py-3.5 whitespace-nowrap border-b-2 border-transparent text-purple-300 hover:text-white transition-all">
                 Konten Kreator
             </button>
-            <button onclick="switchTab('pengembangan-diri')" id="tab-pengembangan-diri" class="tab-btn px-4 py-3 whitespace-nowrap border-b-2 border-transparent hover:text-teal-600 transition-colors">
+            <button onclick="switchTab('pengembangan-diri')" id="tab-pengembangan-diri" class="tab-btn px-3.5 py-3.5 whitespace-nowrap border-b-2 border-transparent text-purple-300 hover:text-white transition-all">
                 Pengembangan Diri
             </button>
         </div>
     </nav>
 
     <!-- Main Container -->
-    <main class="max-w-md mx-auto px-4 mt-6 space-y-8">
+    <main class="max-w-md mx-auto px-4 mt-6 space-y-6">
 
-        <!-- List View Card Section (Konsep Gambar Atas) -->
-        <section class="bg-[#f0f3f6] rounded-2xl p-5 border-shadow relative">
-            <div class="mb-4">
-                <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Produk Terpopuler</span>
+        <!-- Controls: Option Toggles (Visual Customization) -->
+        <div id="displayControls" class="bg-purple-900/30 border border-purple-800/40 rounded-xl p-3 text-xs flex items-center justify-between gap-2 text-purple-200">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-sliders text-purple-400"></i>
+                <span class="font-medium">Gambar Thumbnail List:</span>
+            </div>
+            <button onclick="toggleListImages()" id="btnToggleImages" class="px-2.5 py-1 bg-purple-700/60 hover:bg-purple-600 text-white font-semibold rounded-lg transition">
+                Tampilkan Gambar
+            </button>
+        </div>
+
+        <!-- Main Product Card Box (Konsep Gambar Utama) -->
+        <section id="mainCardBox" class="bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-100 rounded-2xl p-4 sm:p-5 border-shadow-purple transition-colors relative">
+            
+            <div class="flex items-center justify-between mb-3">
+                <span id="sectionLabel" class="text-xs font-bold uppercase tracking-wider text-purple-700 dark:text-purple-300">
+                    Produk pilihan
+                </span>
+                <span id="productCounter" class="text-[11px] text-slate-500 dark:text-slate-400 font-medium">
+                    Menampilkan...
+                </span>
             </div>
 
             <!-- Live Search Bar -->
             <div class="relative mb-4">
-                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
+                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
                 <input type="text" id="searchInput" oninput="handleSearch()" 
-                       placeholder="Cari..." 
-                       class="w-full pl-10 pr-4 py-2.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 shadow-sm transition">
+                       placeholder="Cari nama produk..." 
+                       class="w-full pl-10 pr-4 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl text-xs sm:text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 shadow-sm transition">
             </div>
 
-            <!-- List Products Container -->
-            <div id="productList" class="space-y-2 min-h-[420px]">
+            <!-- List Products Container (Full Width Title - No Truncate) -->
+            <div id="productList" class="space-y-2.5 min-h-[380px]">
                 <!-- Dynamic Content Generated via JS -->
             </div>
 
-            <!-- Pagination Bar -->
-            <div class="mt-5 pt-3 border-t border-gray-200 flex items-center justify-center gap-3 text-sm text-gray-600 font-medium">
-                <button id="btnPrev" onclick="changePage(-1)" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-gray-200 text-gray-600 disabled:opacity-30 disabled:cursor-not-allowed">
-                    <i class="fa-solid fa-chevron-left text-xs"></i>
+            <!-- Pagination Controls (Geser/Navigasi Halaman) -->
+            <div class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs font-semibold">
+                <button id="btnPrev" onclick="changePage(-1)" class="px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 disabled:opacity-30 disabled:cursor-not-allowed flex items-center gap-1.5 transition">
+                    <i class="fa-solid fa-chevron-left text-[10px]"></i> Prev
                 </button>
                 
-                <div id="paginationNumbers" class="flex items-center gap-2">
+                <div id="paginationNumbers" class="flex items-center gap-1.5 overflow-x-auto no-scrollbar max-w-[180px] py-1">
                     <!-- Dynamic Page Numbers -->
                 </div>
 
-                <button id="btnNext" onclick="changePage(1)" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-gray-200 text-gray-600 disabled:opacity-30 disabled:cursor-not-allowed">
-                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                <button id="btnNext" onclick="changePage(1)" class="px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 disabled:opacity-30 disabled:cursor-not-allowed flex items-center gap-1.5 transition">
+                    Next <i class="fa-solid fa-chevron-right text-[10px]"></i>
                 </button>
             </div>
         </section>
 
-        <!-- Grid Banner Products (Konsep Gambar Bawah) -->
-        <section class="space-y-3">
+        <!-- Optional Grid Banner Products (Konsep Gambar Bawah - Bisa di-Toggle Aktif/Tidak) -->
+        <section id="gridSection" class="space-y-3 pt-2">
             <div class="flex items-center justify-between">
-                <h3 class="text-sm font-bold text-gray-900 tracking-wide">Rekomendasi Spesial</h3>
-                <span class="text-xs font-semibold text-teal-800 bg-white/60 px-2 py-0.5 rounded-full">Diskon Terbatas</span>
+                <h3 class="text-xs font-bold uppercase tracking-wider text-purple-200 flex items-center gap-1.5">
+                    <i class="fa-solid fa-fire text-amber-400"></i> Rekomendasi Spesial
+                </h3>
+                <span class="text-[10px] font-bold text-amber-300 bg-amber-950/60 border border-amber-500/30 px-2 py-0.5 rounded-full">
+                    Diskon Terbatas
+                </span>
             </div>
 
             <div class="grid grid-cols-2 gap-3" id="gridProductList">
@@ -159,69 +221,80 @@
 
     </main>
 
-    <!-- Floating Action Button / QR Code -->
-    <div class="fixed bottom-4 right-4 z-40">
-        <button onclick="openModal('https://wa.me/')" class="w-12 h-12 bg-white text-gray-900 rounded-full shadow-2xl border-2 border-gray-900 flex items-center justify-center text-xl hover:scale-105 active:scale-95 transition">
-            <i class="fa-solid fa-qrcode"></i>
-        </button>
-    </div>
-
-    <!-- Link Redirect Modal -->
-    <div id="affiliateModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-sm w-full p-6 text-center shadow-2xl transform transition-all scale-100">
-            <div class="w-14 h-14 bg-teal-100 text-teal-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+    <!-- Sales Toast Pop-up Notification (Notifikasi Pembelian Otomatis) -->
+    <div id="salesToast" class="fixed bottom-4 left-4 right-4 sm:left-4 sm:right-auto sm:max-w-xs z-50 transition-all duration-500 transform translate-y-20 opacity-0 pointer-events-none">
+        <div class="bg-slate-900/95 text-white border border-purple-500/40 p-3 rounded-2xl shadow-2xl backdrop-blur-md flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-purple-600/30 border border-purple-400 flex items-center justify-center text-purple-300 shrink-0">
+                <i class="fa-solid fa-bag-shopping text-sm"></i>
             </div>
-            <h3 class="text-lg font-bold text-gray-900 mb-1" id="modalTitle">Membuka Produk Affiliate</h3>
-            <p class="text-xs text-gray-500 mb-6" id="modalDesc">Kamu akan diarahkan ke halaman resmi penyedia produk.</p>
-            
-            <div class="flex gap-3">
-                <button onclick="closeModal()" class="flex-1 py-2.5 px-4 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold rounded-xl text-sm transition">
-                    Batal
-                </button>
-                <a id="modalLinkBtn" href="#" target="_blank" onclick="closeModal()" class="flex-1 py-2.5 px-4 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-xl text-sm transition shadow-md shadow-teal-500/20 flex items-center justify-center gap-2">
-                    Lanjutkan <i class="fa-solid fa-arrow-right text-xs"></i>
-                </a>
+            <div class="min-w-0 flex-1">
+                <p class="text-[11px] text-purple-300 font-semibold truncate" id="toastBuyerName">Uxxi Sxxxxxh</p>
+                <p class="text-[11px] text-slate-200 font-medium leading-tight truncate" id="toastProductName">Baru saja membeli 'Blogging Marketing'</p>
+                <span class="text-[9px] text-slate-400" id="toastTime">1 menit yang lalu</span>
             </div>
+            <button onclick="hideSalesToast()" class="text-slate-400 hover:text-white text-xs p-1">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
         </div>
     </div>
 
     <script>
-        // Sample Product Database (20+ Items to test pagination > 10 items)
+        /* ====================================================================
+           PANDUAN LENGKAP PENGEDITAN UNTUK PENGGUNA (READ ME):
+           --------------------------------------------------------------------
+           1. CARA MENAMBAH/MENGUBAH PRODUK DAFTAR LIST (productsData):
+              - Cukup tambah objek baru ke dalam array `productsData` di bawah.
+              - `id`: Angka unik (1, 2, 3...)
+              - `title`: Nama lengkap produk (TIDAK AKAN TERPOTONG di layar HP)
+              - `category`: Kategori tab ('gratis', 'ebook', 'produk-digital', 'konten-kreator', 'pengembangan-diri')
+              - `detail`: Keterangan singkat bawah judul (misal: "Detail Ecourse", "Ebook PDF", dll)
+              - `link`: Masukkan URL Link Affiliate Anda (misal: "https://ratakan.com/aff/1234")
+              - `icon`: Class fontawesome (misal: 'fa-solid fa-book', 'fa-solid fa-bag-shopping')
+              - `image`: URL Gambar (opsional jika memilih mode gambar)
+
+           2. CARA MENGATUR JUMLAH PRODUK PER HALAMAN (PAGINATION):
+              - Ubah variabel `itemsPerPage = 10` (Default 10 produk per halaman).
+              - Jika produk lebih dari 10, nomor halaman (1, 2, 3...) akan otomatis dibuat!
+
+           3. CARA EDIT NOTIFIKASI PEMBELI BERJALAN (buyerNotifications):
+              - Edit array `buyerNotifications` di bagian bawah JS dengan nama & produk yang diinginkan.
+           ==================================================================== */
+
+        // 1. DATABASE PRODUK LIST (LIST PRODUCTS)
         const productsData = [
-            { id: 1, title: "Blogging Marketing (BM)", category: "produk-digital", detail: "Detail Ecourse", link: "https://ratakan.com", icon: "fa-solid fa-bag-shopping" },
-            { id: 2, title: "Trik Broadcast WA Anti Blokir (BCWA)", category: "produk-digital", detail: "Detail Ecourse", link: "https://ratakan.com", icon: "fa-solid fa-bag-shopping" },
-            { id: 3, title: "Tiktok Content Mastery (TCM)", category: "konten-kreator", detail: "Detail Ecourse", link: "https://ratakan.com", icon: "fa-solid fa-bag-shopping" },
-            { id: 4, title: "TRIK SUPER LEJITKAN FOLLOWER", category: "konten-kreator", detail: "Detail Ecourse", link: "https://ratakan.com", icon: "fa-solid fa-bag-shopping" },
-            { id: 5, title: "CUAN DOLLAR DARI TIKTOK SERIES", category: "konten-kreator", detail: "Detail Ecourse", link: "https://ratakan.com", icon: "fa-solid fa-bag-shopping" },
-            { id: 6, title: "LANDING PAGE MASTERY", category: "produk-digital", detail: "Detail Ecourse", link: "https://ratakan.com", icon: "fa-solid fa-bag-shopping" },
-            { id: 7, title: "EBOOK NEWBIEPRENEUR", category: "ebook", detail: "Detail Ebook", link: "https://ratakan.com", icon: "fa-solid fa-book" },
-            { id: 8, title: "MEMBANGUN TOKO ONLINE SENDIRI DALAM SEHARI", category: "ebook", detail: "Detail Ebook", link: "https://ratakan.com", icon: "fa-solid fa-book" },
-            { id: 9, title: "PANDUAN BIKIN GAME DENGAN GREENFOOT", category: "ebook", detail: "Detail Ebook", link: "https://ratakan.com", icon: "fa-solid fa-book" },
-            { id: 10, title: "PANDUAN BIKIN APLIKASI ANDROID JILID #1", category: "ebook", detail: "Detail Ebook", link: "https://ratakan.com", icon: "fa-solid fa-book" },
+            { id: 1, title: "Blogging Marketing (BM) - Panduan Lengkap Hasilkan Passive Income Dari Blog", category: "produk-digital", detail: "Detail Ecourse Lengkap", link: "https://ratakan.com", icon: "fa-solid fa-bag-shopping", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=150&q=80" },
+            { id: 2, title: "Trik Broadcast WA Anti Blokir (BCWA) v2.0", category: "produk-digital", detail: "Detail Ecourse & Software", link: "https://ratakan.com", icon: "fa-solid fa-bag-shopping", image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=150&q=80" },
+            { id: 3, title: "Tiktok Content Mastery (TCM) - Cara Meraih 100K Follower Organik", category: "konten-kreator", detail: "Detail Ecourse Video", link: "https://ratakan.com", icon: "fa-solid fa-video", image: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=150&q=80" },
+            { id: 4, title: "TRIK SUPER LEJITKAN FOLLOWER DAN ENGAGEMENT AKUN TIKTOK & IG", category: "konten-kreator", detail: "Detail Ecourse", link: "https://ratakan.com", icon: "fa-solid fa-users", image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=150&q=80" },
+            { id: 5, title: "CUAN DOLLAR DARI TIKTOK SERIES (PANDUAN LENGKAP TARGET LUAR NEGERI)", category: "konten-kreator", detail: "Detail Ecourse Eksklusif", link: "https://ratakan.com", icon: "fa-solid fa-sack-dollar", image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=150&q=80" },
+            { id: 6, title: "LANDING PAGE MASTERY UNTUK KONVERSI PENJUALAN TINGGI", category: "produk-digital", detail: "Detail Ecourse & Template", link: "https://ratakan.com", icon: "fa-solid fa-laptop-code", image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=150&q=80" },
+            { id: 7, title: "EBOOK NEWBIEPRENEUR - PANDUAN MEMULAI BISNIS DIGITAL DARI NOL", category: "ebook", detail: "Detail Ebook PDF (200 Halaman)", link: "https://ratakan.com", icon: "fa-solid fa-book", image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=150&q=80" },
+            { id: 8, title: "MEMBANGUN TOKO ONLINE SENDIRI DALAM SEHARI TANPA CODING", category: "ebook", detail: "Detail Ebook Panduan", link: "https://ratakan.com", icon: "fa-solid fa-book-open", image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=150&q=80" },
+            { id: 9, title: "PANDUAN BIKIN GAME INTERAKTIF DENGAN GREENFOOT & JAVA", category: "ebook", detail: "Detail Ebook Coding", link: "https://ratakan.com", icon: "fa-solid fa-gamepad", image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=150&q=80" },
+            { id: 10, title: "PANDUAN BIKIN APLIKASI ANDROID JILID #1 UNTUK PEMULA", category: "ebook", detail: "Detail Ebook Tutorial", link: "https://ratakan.com", icon: "fa-solid fa-mobile-screen", image: "https://images.unsplash.com/photo-1526498460520-4c246339dccb?auto=format&fit=crop&w=150&q=80" },
             
-            // Page 2 items
-            { id: 11, title: "PANDUAN BIKIN APLIKASI ANDROID JILID #2", category: "ebook", detail: "Detail Ebook", link: "https://ratakan.com", icon: "fa-solid fa-book" },
-            { id: 12, title: "EBOOK GRATIS: PANDUAN AFFILIATE UNTUK PEMULA", category: "gratis", detail: "Gratis Download", link: "https://ratakan.com", icon: "fa-solid fa-gift" },
-            { id: 13, title: "CHECKLIST KONTEN VIRAL TIKTOK", category: "gratis", detail: "Gratis Template", link: "https://ratakan.com", icon: "fa-solid fa-gift" },
-            { id: 14, title: "MASTERING CANVA DESAIN GRAFIS", category: "konten-kreator", detail: "Detail Ecourse", link: "https://ratakan.com", icon: "fa-solid fa-bag-shopping" },
-            { id: 15, title: "MANAJEMEN WAKTU & PRODUKTIVITAS", category: "pengembangan-diri", detail: "Detail Ecourse", link: "https://ratakan.com", icon: "fa-solid fa-user-gear" },
-            { id: 16, title: "PUBLIC SPEAKING & PERSUASI BISNIS", category: "pengembangan-diri", detail: "Detail Ecourse", link: "https://ratakan.com", icon: "fa-solid fa-user-gear" },
-            { id: 17, title: "PANDUAN COPYWRITING JUALAN LARIS", category: "ebook", detail: "Detail Ebook", link: "https://ratakan.com", icon: "fa-solid fa-book" },
-            { id: 18, title: "TEMPLATING PROMPT CHATGPT BISNIS", category: "produk-digital", detail: "Detail Prompt Kit", link: "https://ratakan.com", icon: "fa-solid fa-cube" },
-            { id: 19, title: "KURSUS SHOPEE AFFILIATE MASTERY", category: "produk-digital", detail: "Detail Ecourse", link: "https://ratakan.com", icon: "fa-solid fa-bag-shopping" },
-            { id: 20, title: "MINI CLASS: MINDSET JUTAWAN DIGITAL", category: "pengembangan-diri", detail: "Detail Ecourse", link: "https://ratakan.com", icon: "fa-solid fa-user-gear" }
+            // Halaman 2 (Pagination)
+            { id: 11, title: "PANDUAN BIKIN APLIKASI ANDROID JILID #2 (TANGKAT LANJUT)", category: "ebook", detail: "Detail Ebook Tutorial", link: "https://ratakan.com", icon: "fa-solid fa-mobile-screen-button", image: "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?auto=format&fit=crop&w=150&q=80" },
+            { id: 12, title: "EBOOK GRATIS: PANDUAN AFFILIATE MARKETING UNTUK PEMULA MODAL $0", category: "gratis", detail: "Download Gratis PDF", link: "https://ratakan.com", icon: "fa-solid fa-gift", image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=150&q=80" },
+            { id: 13, title: "CHECKLIST KONTEN VIRAL TIKTOK & REELS INSTAGRAM", category: "gratis", detail: "Template Worksheet Gratis", link: "https://ratakan.com", icon: "fa-solid fa-file-circle-check", image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=150&q=80" },
+            { id: 14, title: "MASTERING CANVA DESAIN GRAFIS LENGKAP BERSAMA TEMPLATE ELITE", category: "konten-kreator", detail: "Detail Ecourse Canva", link: "https://ratakan.com", icon: "fa-solid fa-palette", image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=150&q=80" },
+            { id: 15, title: "MANAJEMEN WAKTU & PRODUKTIVITAS UNTUK FREELANCER & PEBISNIS", category: "pengembangan-diri", detail: "Detail Ecourse Self-Improvement", link: "https://ratakan.com", icon: "fa-solid fa-user-clock", image: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=150&q=80" },
+            { id: 16, title: "PUBLIC SPEAKING & PERSUASI BISNIS TINGKAT TINGGI", category: "pengembangan-diri", detail: "Detail Ecourse Video", link: "https://ratakan.com", icon: "fa-solid fa-bullhorn", image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=150&q=80" },
+            { id: 17, title: "PANDUAN COPYWRITING JUALAN LARIS MANIS TANPA MENGEMAS", category: "ebook", detail: "Detail Ebook Masterclass", link: "https://ratakan.com", icon: "fa-solid fa-pen-nib", image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=150&q=80" },
+            { id: 18, title: "TEMPLATING PROMPT CHATGPT UNTUK OTOMATISASI KONTEN BISNIS", category: "produk-digital", detail: "Detail Prompt Kit 500+", link: "https://ratakan.com", icon: "fa-solid fa-robot", image: "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=150&q=80" },
+            { id: 19, title: "KURSUS SHOPEE AFFILIATE MASTERY - KUNCI SUKSES CUAN DARI RUMAH", category: "produk-digital", detail: "Detail Ecourse Video", link: "https://ratakan.com", icon: "fa-solid fa-store", image: "https://images.unsplash.com/photo-1556742049-0a670f4a4591?auto=format&fit=crop&w=150&q=80" },
+            { id: 20, title: "MINI CLASS: MINDSET JUTAWAN DIGITAL & FINANCIAL FREEDOM", category: "pengembangan-diri", detail: "Detail Ecourse Audio & Video", link: "https://ratakan.com", icon: "fa-solid fa-brain", image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=150&q=80" }
         ];
 
-        // Grid Promo Items
-        const gridProducts = [
+        // 2. DATABASE PRODUK GRID PROMO (REKOMENDASI SPESIAL)
+        const gridProductsData = [
             {
                 id: 101,
-                title: "Jual Kembali Produk Yang Kamu Beli",
+                title: "Jual Kembali Produk Yang Kamu Beli (Lisensi PLR/MRR)",
                 price: "Rp 350.000",
                 originalPrice: "Rp 1.100.000",
                 image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80",
-                link: "https://kontak.link"
+                link: "https://ratakan.com"
             },
             {
                 id: 102,
@@ -229,23 +302,80 @@
                 price: "Rp 35.000",
                 originalPrice: "Rp 89.000",
                 image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=500&q=80",
-                link: "https://kontak.link"
+                link: "https://ratakan.com"
             }
         ];
 
-        // App State
+        // 3. PENGATURAN KATEGORI (Opsi Apakah Grid Promo Tampil di Kategori Ini)
+        const categorySettings = {
+            'all': { name: 'Home / Semua Produk', showGrid: true },
+            'gratis': { name: 'Produk Gratis', showGrid: false },
+            'ebook': { name: 'Koleksi Ebook', showGrid: true },
+            'produk-digital': { name: 'E-Course & Tools Digital', showGrid: true },
+            'konten-kreator': { name: 'Tools Konten Kreator', showGrid: true },
+            'pengembangan-diri': { name: 'Pengembangan Diri', showGrid: false }
+        };
+
+        // 4. DATABASE NOTIFIKASI PEMBELIAN BERJALAN (Bisa Di-edit Manual)
+        const buyerNotifications = [
+            { buyer: "Uxxi Sxxxxxh", product: "Blogging Marketing (BM)", time: "2 menit yang lalu" },
+            { buyer: "Axxi Pxxxxa", product: "Trik Broadcast WA Anti Blokir", time: "5 menit yang lalu" },
+            { buyer: "Rxxa Kxxxxa", product: "Ebook Newbiepreneur", time: "12 menit yang lalu" },
+            { buyer: "Dxxi Sxxxxo", product: "Tiktok Content Mastery", time: "18 menit yang lalu" },
+            { buyer: "Bxxg Fxxxxi", product: "Shopee Affiliate Mastery", time: "25 menit yang lalu" }
+        ];
+
+        // State Aplikasi
         let currentTab = 'all';
         let searchQuery = '';
         let currentPage = 1;
-        const itemsPerPage = 10;
+        const itemsPerPage = 10; // Jumlah produk per halaman
+        let showListImages = false; // Mode gambar thumbnail di list
+        let isDarkMode = true;
+        let notificationIndex = 0;
 
-        // Initialize App
+        // Initialize App on Load
         document.addEventListener('DOMContentLoaded', () => {
             renderListProducts();
             renderGridProducts();
+            startSalesNotificationLoop();
         });
 
-        // Filter products based on active tab & search keyword
+        // Toggle Mode Terang / Gelap
+        function toggleTheme() {
+            isDarkMode = !isDarkMode;
+            const body = document.getElementById('appBody');
+            const themeIcon = document.getElementById('themeIcon');
+            const themeLabel = document.getElementById('themeLabel');
+
+            if (isDarkMode) {
+                document.documentElement.classList.add('dark');
+                body.className = "bg-gradient-to-br from-slate-950 via-purple-950 to-indigo-950 min-h-screen text-slate-100 pb-20 selection:bg-purple-500 selection:text-white";
+                themeIcon.className = "fa-solid fa-sun text-amber-400";
+                themeLabel.textContent = "Mode Terang";
+            } else {
+                document.documentElement.classList.remove('dark');
+                body.className = "bg-gradient-to-br from-purple-100 via-indigo-50 to-purple-200 min-h-screen text-slate-900 pb-20 selection:bg-purple-600 selection:text-white";
+                themeIcon.className = "fa-solid fa-moon text-purple-700";
+                themeLabel.textContent = "Mode Gelap";
+            }
+        }
+
+        // Toggle Tampilan Gambar / Teks di Daftar List
+        function toggleListImages() {
+            showListImages = !showListImages;
+            const btn = document.getElementById('btnToggleImages');
+            if (showListImages) {
+                btn.textContent = "Mode Teks Saja";
+                btn.className = "px-2.5 py-1 bg-amber-600 hover:bg-amber-500 text-white font-semibold rounded-lg transition";
+            } else {
+                btn.textContent = "Tampilkan Gambar";
+                btn.className = "px-2.5 py-1 bg-purple-700/60 hover:bg-purple-600 text-white font-semibold rounded-lg transition";
+            }
+            renderListProducts();
+        }
+
+        // Filter Produk berdasarkan Tab & Kata Kunci Cari
         function getFilteredProducts() {
             return productsData.filter(item => {
                 const matchesTab = (currentTab === 'all') || (item.category === currentTab);
@@ -255,12 +385,13 @@
             });
         }
 
-        // Render List View Products
+        // Render List Produk (1 Tab Redirect, Tanpa Popup Confirmation, Nama Produk Tidak Terpotong)
         function renderListProducts() {
             const container = document.getElementById('productList');
+            const counterEl = document.getElementById('productCounter');
             const filtered = getFilteredProducts();
 
-            // Calculate pagination
+            // Hitung Pagination
             const totalPages = Math.ceil(filtered.length / itemsPerPage) || 1;
             if (currentPage > totalPages) currentPage = totalPages;
             if (currentPage < 1) currentPage = 1;
@@ -268,36 +399,53 @@
             const startIndex = (currentPage - 1) * itemsPerPage;
             const paginatedItems = filtered.slice(startIndex, startIndex + itemsPerPage);
 
-            // Empty state check
+            counterEl.textContent = `Total: ${filtered.length} produk (Hal ${currentPage}/${totalPages})`;
+
+            // Jika Kosong
             if (paginatedItems.length === 0) {
                 container.innerHTML = `
-                    <div class="text-center py-12 text-gray-400">
-                        <i class="fa-solid fa-box-open text-4xl mb-2"></i>
-                        <p class="text-sm">Produk tidak ditemukan.</p>
+                    <div class="text-center py-12 text-slate-400">
+                        <i class="fa-solid fa-box-open text-3xl mb-2 text-purple-400/60"></i>
+                        <p class="text-xs">Produk tidak ditemukan.</p>
                     </div>
                 `;
             } else {
                 container.innerHTML = paginatedItems.map(item => `
-                    <div onclick="openModal('${item.link}', '${item.title}')" 
-                         class="flex items-center justify-between p-3 bg-white rounded-xl hover:bg-teal-50 border border-gray-100 transition-all cursor-pointer group shadow-sm active:scale-[0.99]">
-                        <div class="flex items-center gap-3 min-w-0">
-                            <div class="w-9 h-9 bg-gray-100 group-hover:bg-teal-100 text-gray-700 group-hover:text-teal-700 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors">
-                                <i class="${item.icon} text-sm"></i>
-                            </div>
-                            <div class="truncate">
-                                <h4 class="text-xs font-bold text-gray-800 truncate leading-tight group-hover:text-teal-900">${item.title}</h4>
-                                <p class="text-[11px] text-gray-500 mt-0.5">${item.detail}</p>
+                    <a href="${item.link}" target="_self" 
+                       class="flex items-center justify-between p-3.5 bg-white dark:bg-slate-800/90 hover:bg-purple-50 dark:hover:bg-purple-900/30 border border-slate-200/80 dark:border-slate-700/80 rounded-xl transition-all shadow-sm active:scale-[0.99] group">
+                        
+                        <div class="flex items-start gap-3 min-w-0 pr-2">
+                            ${showListImages ? `
+                                <img src="${item.image}" alt="${item.title}" class="w-11 h-11 object-cover rounded-lg border border-purple-300 dark:border-purple-700 shrink-0 mt-0.5">
+                            ` : `
+                                <div class="w-9 h-9 bg-purple-100 dark:bg-purple-900/50 group-hover:bg-purple-600 text-purple-700 dark:text-purple-300 group-hover:text-white rounded-lg flex items-center justify-center shrink-0 transition-colors mt-0.5">
+                                    <i class="${item.icon} text-xs"></i>
+                                </div>
+                            `}
+                            
+                            <!-- Kunci Agar Nama Panjang Produk TIDAK Terpotong: break-words, whitespace-normal -->
+                            <div class="min-w-0 flex-1">
+                                <h4 class="text-xs font-bold text-slate-900 dark:text-slate-100 leading-snug whitespace-normal break-words group-hover:text-purple-600 dark:group-hover:text-purple-300 transition-colors">
+                                    ${item.title}
+                                </h4>
+                                <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-1 font-medium">
+                                    <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                    ${item.detail}
+                                </p>
                             </div>
                         </div>
-                        <i class="fa-solid fa-chevron-right text-gray-400 text-xs group-hover:translate-x-1 transition-transform flex-shrink-0 pl-2"></i>
-                    </div>
+
+                        <div class="shrink-0 text-slate-400 group-hover:text-purple-500 group-hover:translate-x-1 transition-all pl-1">
+                            <i class="fa-solid fa-chevron-right text-xs"></i>
+                        </div>
+                    </a>
                 `).join('');
             }
 
             renderPaginationControls(totalPages);
         }
 
-        // Render Pagination Numbers
+        // Render Tombol Pagination Angka < 1 2 3 >
         function renderPaginationControls(totalPages) {
             const paginationContainer = document.getElementById('paginationNumbers');
             const btnPrev = document.getElementById('btnPrev');
@@ -313,8 +461,8 @@
                     <button onclick="goToPage(${i})" 
                             class="w-7 h-7 rounded-lg text-xs font-bold transition-all ${
                                 isActive 
-                                ? 'bg-teal-600 text-white shadow-sm' 
-                                : 'hover:bg-gray-200 text-gray-600'
+                                ? 'bg-purple-600 text-white shadow-md shadow-purple-600/40' 
+                                : 'hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300'
                             }">
                         ${i}
                     </button>
@@ -323,85 +471,119 @@
             paginationContainer.innerHTML = numbersHtml;
         }
 
-        // Change page using arrows
+        // Ubah Halaman
         function changePage(direction) {
             currentPage += direction;
             renderListProducts();
+            scrollToMainCard();
         }
 
-        // Jump to specific page
+        // Jump ke Halaman Spesifik
         function goToPage(page) {
             currentPage = page;
             renderListProducts();
+            scrollToMainCard();
         }
 
-        // Handle Search Input
+        function scrollToMainCard() {
+            document.getElementById('mainCardBox').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Handle Search Bar
         function handleSearch() {
             searchQuery = document.getElementById('searchInput').value;
-            currentPage = 1; // Reset to first page
+            currentPage = 1; // Reset ke halaman pertama
             renderListProducts();
         }
 
-        // Switch Tabs
+        // Switch Multipage Tabs
         function switchTab(tabName) {
             currentTab = tabName;
-            currentPage = 1; // Reset to page 1
+            currentPage = 1; // Reset halaman ke 1
 
-            // Update Tab Active UI
+            // Update Tab active styling
             document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('border-teal-600', 'text-teal-700', 'font-bold');
-                btn.classList.add('border-transparent');
+                btn.classList.remove('border-purple-400', 'text-white', 'font-bold');
+                btn.classList.add('border-transparent', 'text-purple-300');
             });
 
             const activeBtn = document.getElementById(`tab-${tabName}`);
             if (activeBtn) {
-                activeBtn.classList.remove('border-transparent');
-                activeBtn.classList.add('border-teal-600', 'text-teal-700', 'font-bold');
+                activeBtn.classList.remove('border-transparent', 'text-purple-300');
+                activeBtn.classList.add('border-purple-400', 'text-white', 'font-bold');
             }
+
+            // Atur Visibilitas Grid Section (Sesuai Opsi Kategori)
+            const gridSection = document.getElementById('gridSection');
+            const catSetting = categorySettings[tabName] || { showGrid: true };
+            if (catSetting.showGrid) {
+                gridSection.classList.remove('hidden');
+            } else {
+                gridSection.classList.add('hidden');
+            }
+
+            // Update Label Judul
+            document.getElementById('sectionLabel').textContent = catSetting.name || 'Produk Pilihan';
 
             renderListProducts();
         }
 
-        // Render Grid Products (Lower Cards)
+        // Render Produk Grid Bergambar (Rekomendasi Spesial)
         function renderGridProducts() {
             const gridContainer = document.getElementById('gridProductList');
-            gridContainer.innerHTML = gridProducts.map(item => `
-                <div onclick="openModal('${item.link}', '${item.title}')" 
-                     class="bg-white rounded-xl overflow-hidden border border-gray-900 shadow-[3px_3px_0px_#1f2937] hover:translate-y-[-2px] transition-transform cursor-pointer flex flex-col justify-between">
+            gridContainer.innerHTML = gridProductsData.map(item => `
+                <a href="${item.link}" target="_self" 
+                   class="bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-slate-900 dark:border-slate-700 border-shadow-light dark:border-shadow-purple hover:-translate-y-1 transition-transform flex flex-col justify-between group">
                     <div>
-                        <div class="h-36 overflow-hidden bg-gray-100 relative">
-                            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover">
+                        <div class="h-32 sm:h-36 overflow-hidden bg-slate-100 dark:bg-slate-800 relative">
+                            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                         </div>
                         <div class="p-3">
-                            <h4 class="text-xs font-semibold text-gray-800 line-clamp-2 leading-snug min-h-[32px]">${item.title}</h4>
+                            <h4 class="text-xs font-bold text-slate-800 dark:text-slate-100 line-clamp-2 leading-tight">${item.title}</h4>
                         </div>
                     </div>
                     <div class="px-3 pb-3 pt-0">
-                        <div class="text-xs font-bold text-gray-900">${item.price}</div>
-                        <div class="text-[10px] text-gray-400 line-through">${item.originalPrice}</div>
+                        <div class="text-xs font-black text-purple-700 dark:text-purple-400">${item.price}</div>
+                        <div class="text-[10px] text-slate-400 line-through">${item.originalPrice}</div>
                     </div>
-                </div>
+                </a>
             `).join('');
         }
 
-        // Modal Functionality
-        function openModal(link, title) {
-            const modal = document.getElementById('affiliateModal');
-            const modalTitle = document.getElementById('modalTitle');
-            const modalLinkBtn = document.getElementById('modalLinkBtn');
+        // 5. NOTIFIKASI PEMBELI OTOMATIS (SALES TOAST POP-UP)
+        function showSalesToast() {
+            const toast = document.getElementById('salesToast');
+            const data = buyerNotifications[notificationIndex];
 
-            if (title) {
-                modalTitle.textContent = title;
-            } else {
-                modalTitle.textContent = "Buka Link Affiliate";
-            }
+            document.getElementById('toastBuyerName').textContent = data.buyer;
+            document.getElementById('toastProductName').textContent = `Baru saja membeli '${data.product}'`;
+            document.getElementById('toastTime').textContent = data.time;
 
-            modalLinkBtn.href = link;
-            modal.classList.remove('hidden');
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            // Sembunyikan otomatis setelah 5 detik
+            setTimeout(() => {
+                hideSalesToast();
+            }, 5000);
+
+            // Rotasi ke data pembeli berikutnya
+            notificationIndex = (notificationIndex + 1) % buyerNotifications.length;
         }
 
-        function closeModal() {
-            document.getElementById('affiliateModal').classList.add('hidden');
+        function hideSalesToast() {
+            const toast = document.getElementById('salesToast');
+            toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+            toast.classList.remove('translate-y-0', 'opacity-100');
+        }
+
+        function startSalesNotificationLoop() {
+            // Tampilkan pertama kali setelah 3 detik
+            setTimeout(() => {
+                showSalesToast();
+                // Kemudian rotasi setiap 12 detik
+                setInterval(showSalesToast, 12000);
+            }, 3000);
         }
     </script>
 </body>
