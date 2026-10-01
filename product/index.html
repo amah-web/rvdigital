@@ -3,243 +3,406 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RV Digital - Katalog Produk</title>
-    <!-- Mengimpor Tailwind CSS untuk desain web yang cepat dan responsif -->
+    <title>Biolink Digital Affiliate</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- CSS Tambahan untuk Animasi Popup Notifikasi -->
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        @keyframes slideIn {
-            from { transform: translateX(-150%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
+        body {
+            font-family: 'Inter', sans-serif;
         }
-        @keyframes slideOut {
-            from { transform: translateX(0); opacity: 1; }
-            to { transform: translateX(-150%); opacity: 0; }
+        /* Custom scrollbar for horizontal tabs */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
         }
-        .popup-enter {
-            animation: slideIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
-        .popup-exit {
-            animation: slideOut 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        /* Glassmorphism & Soft shadows */
+        .card-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
         }
-        /* Memastikan gambar produk memiliki rasio yang seragam */
-        .product-img {
-            aspect-ratio: 16/9;
-            object-fit: cover;
+        .border-shadow {
+            border: 2px solid #1f2937;
+            box-shadow: 4px 4px 0px #1f2937;
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
+<body class="bg-[#4ec5d4] min-h-screen text-gray-800 pb-16">
 
-    <!-- BAGIAN 1: HEADER & NAVIGASI -->
-    <header class="bg-white shadow-sm sticky top-0 z-40">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <!-- Kiri: Logo & Brand -->
-            <div class="flex items-center gap-2 cursor-pointer">
-                <div class="bg-blue-600 text-white p-2 rounded-lg font-bold text-xl leading-none">RV</div>
-                <span class="text-xl font-bold text-gray-800 tracking-tight">RV Digital</span>
+    <!-- Profile & Header Section -->
+    <header class="max-w-md mx-auto pt-8 px-4 text-center">
+        <!-- Avatar -->
+        <div class="relative w-28 h-28 mx-auto mb-4">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" 
+                 alt="Foto Profil" 
+                 class="w-full h-full object-cover rounded-full border-4 border-white shadow-lg">
+            <div class="absolute bottom-0 right-0 bg-green-500 w-6 h-6 rounded-full border-2 border-white flex items-center justify-center text-white text-xs" title="Online">
+                <i class="fa-solid fa-check"></i>
             </div>
-            <!-- Kanan: Menu Navigasi Desktop -->
-            <nav class="hidden md:flex gap-6 text-gray-600 font-medium">
-                <a href="#" class="hover:text-blue-600 transition">Home</a>
-                <a href="#" class="hover:text-blue-600 transition">Blog</a>
-                <a href="#" class="hover:text-blue-600 transition">Login</a>
-            </nav>
-            <!-- Tombol Menu Mobile (Hanya muncul di HP) -->
-            <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-blue-600 focus:outline-none transition">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
-            </button>
         </div>
-        
-        <!-- Dropdown Menu Mobile -->
-        <nav id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-4 pt-2 pb-4 space-y-2 shadow-inner">
-            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition">Home</a>
-            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition">Blog</a>
-            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition">Login</a>
-        </nav>
+
+        <!-- Bio Details -->
+        <h1 class="text-2xl font-bold text-gray-900 tracking-tight drop-shadow-sm">Robi Affiliate Digital</h1>
+        <p class="text-sm font-medium text-gray-800 mt-1 max-w-xs mx-auto leading-relaxed opacity-90">
+            Rekomendasi Ebook, Kursus Online, & Tools Digital Terbaik untuk Scale-up Bisnis Kamu 🚀
+        </p>
+
+        <!-- Social Media Buttons -->
+        <div class="flex items-center justify-center gap-3 mt-5 flex-wrap">
+            <!-- WhatsApp -->
+            <a href="https://wa.me/" target="_blank" class="w-10 h-10 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full flex items-center justify-center text-lg shadow-md hover:scale-110 transition-transform" title="WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <!-- Telegram -->
+            <a href="https://t.me/" target="_blank" class="w-10 h-10 bg-sky-500 hover:bg-sky-600 text-white rounded-full flex items-center justify-center text-lg shadow-md hover:scale-110 transition-transform" title="Telegram">
+                <i class="fa-brands fa-telegram"></i>
+            </a>
+            <!-- TikTok -->
+            <a href="https://tiktok.com/" target="_blank" class="w-10 h-10 bg-black hover:bg-gray-800 text-white rounded-full flex items-center justify-center text-lg shadow-md hover:scale-110 transition-transform" title="TikTok">
+                <i class="fa-brands fa-tiktok"></i>
+            </a>
+            <!-- YouTube -->
+            <a href="https://youtube.com/" target="_blank" class="w-10 h-10 bg-red-600 hover:bg-red-700 text-white rounded-full flex items-center justify-center text-lg shadow-md hover:scale-110 transition-transform" title="YouTube">
+                <i class="fa-brands fa-youtube"></i>
+            </a>
+            <!-- Instagram -->
+            <a href="https://instagram.com/" target="_blank" class="w-10 h-10 bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 text-white rounded-full flex items-center justify-center text-lg shadow-md hover:scale-110 transition-transform" title="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <!-- Facebook -->
+            <a href="https://facebook.com/" target="_blank" class="w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white rounded-full flex items-center justify-center text-lg shadow-md hover:scale-110 transition-transform" title="Facebook">
+                <i class="fa-brands fa-facebook-f"></i>
+            </a>
+        </div>
     </header>
 
-    <!-- BAGIAN 2: KONTEN UTAMA (Katalog Produk) -->
-    <main class="flex-grow w-full max-w-6xl mx-auto px-4 py-10">
-        <!-- Judul Katalog -->
-        <div class="text-center mb-10">
-            <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">Katalog Produk Digital</h1>
-            <p class="text-gray-500 max-w-2xl mx-auto">Tingkatkan produktivitas dan omset bisnis Anda dengan koleksi produk digital terbaik dari RV Digital.</p>
+    <!-- Sticky Navigation Tabs -->
+    <nav class="sticky top-0 z-30 mt-6 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-200">
+        <div class="max-w-md mx-auto flex items-center overflow-x-auto no-scrollbar px-2 text-sm font-semibold text-gray-600">
+            <button onclick="switchTab('all')" id="tab-all" class="tab-btn px-4 py-3 whitespace-nowrap border-b-2 border-teal-600 text-teal-700 font-bold transition-colors">
+                Home
+            </button>
+            <button onclick="switchTab('gratis')" id="tab-gratis" class="tab-btn px-4 py-3 whitespace-nowrap border-b-2 border-transparent hover:text-teal-600 transition-colors">
+                Gratis
+            </button>
+            <button onclick="switchTab('ebook')" id="tab-ebook" class="tab-btn px-4 py-3 whitespace-nowrap border-b-2 border-transparent hover:text-teal-600 transition-colors">
+                Ebook
+            </button>
+            <button onclick="switchTab('produk-digital')" id="tab-produk-digital" class="tab-btn px-4 py-3 whitespace-nowrap border-b-2 border-transparent hover:text-teal-600 transition-colors">
+                Produk Digital
+            </button>
+            <button onclick="switchTab('konten-kreator')" id="tab-konten-kreator" class="tab-btn px-4 py-3 whitespace-nowrap border-b-2 border-transparent hover:text-teal-600 transition-colors">
+                Konten Kreator
+            </button>
+            <button onclick="switchTab('pengembangan-diri')" id="tab-pengembangan-diri" class="tab-btn px-4 py-3 whitespace-nowrap border-b-2 border-transparent hover:text-teal-600 transition-colors">
+                Pengembangan Diri
+            </button>
         </div>
+    </nav>
 
-        <!-- Wadah Grid Produk -->
-        <div id="product-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Produk akan dimuat secara otomatis oleh JavaScript -->
-        </div>
+    <!-- Main Container -->
+    <main class="max-w-md mx-auto px-4 mt-6 space-y-8">
+
+        <!-- List View Card Section (Konsep Gambar Atas) -->
+        <section class="bg-[#f0f3f6] rounded-2xl p-5 border-shadow relative">
+            <div class="mb-4">
+                <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Produk Terpopuler</span>
+            </div>
+
+            <!-- Live Search Bar -->
+            <div class="relative mb-4">
+                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <input type="text" id="searchInput" oninput="handleSearch()" 
+                       placeholder="Cari..." 
+                       class="w-full pl-10 pr-4 py-2.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 shadow-sm transition">
+            </div>
+
+            <!-- List Products Container -->
+            <div id="productList" class="space-y-2 min-h-[420px]">
+                <!-- Dynamic Content Generated via JS -->
+            </div>
+
+            <!-- Pagination Bar -->
+            <div class="mt-5 pt-3 border-t border-gray-200 flex items-center justify-center gap-3 text-sm text-gray-600 font-medium">
+                <button id="btnPrev" onclick="changePage(-1)" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-gray-200 text-gray-600 disabled:opacity-30 disabled:cursor-not-allowed">
+                    <i class="fa-solid fa-chevron-left text-xs"></i>
+                </button>
+                
+                <div id="paginationNumbers" class="flex items-center gap-2">
+                    <!-- Dynamic Page Numbers -->
+                </div>
+
+                <button id="btnNext" onclick="changePage(1)" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-gray-200 text-gray-600 disabled:opacity-30 disabled:cursor-not-allowed">
+                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- Grid Banner Products (Konsep Gambar Bawah) -->
+        <section class="space-y-3">
+            <div class="flex items-center justify-between">
+                <h3 class="text-sm font-bold text-gray-900 tracking-wide">Rekomendasi Spesial</h3>
+                <span class="text-xs font-semibold text-teal-800 bg-white/60 px-2 py-0.5 rounded-full">Diskon Terbatas</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3" id="gridProductList">
+                <!-- Grid items generated dynamically -->
+            </div>
+        </section>
+
     </main>
 
-    <!-- BAGIAN 3: FOOTER -->
-    <footer class="bg-white border-t border-gray-200 mt-auto py-8">
-        <div class="max-w-6xl mx-auto px-4 flex flex-col items-center">
-            <div class="text-2xl font-bold text-gray-800 mb-2">RV Digital</div>
-            <p class="text-gray-500 text-sm text-center">&copy; 2026 RV Digital. Hak Cipta Dilindungi.</p>
-        </div>
-    </footer>
+    <!-- Floating Action Button / QR Code -->
+    <div class="fixed bottom-4 right-4 z-40">
+        <button onclick="openModal('https://wa.me/')" class="w-12 h-12 bg-white text-gray-900 rounded-full shadow-2xl border-2 border-gray-900 flex items-center justify-center text-xl hover:scale-105 active:scale-95 transition">
+            <i class="fa-solid fa-qrcode"></i>
+        </button>
+    </div>
 
-    <!-- BAGIAN 4: ELEMEN POPUP NOTIFIKASI -->
-    <div id="sales-popup" class="fixed bottom-4 left-4 bg-white p-4 rounded-lg shadow-2xl border-l-4 border-blue-500 z-50 flex items-center gap-4 max-w-sm opacity-0 pointer-events-none" style="transform: translateX(-150%);">
-        <div class="bg-blue-50 text-blue-600 p-2.5 rounded-full shrink-0">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-            </svg>
-        </div>
-        <div>
-            <p class="text-sm text-gray-800 leading-snug">
-                <span id="popup-name" class="font-bold">A***i</span> telah membeli <br>
-                <span id="popup-product" class="font-bold text-blue-600 line-clamp-1">Nama Produk</span>
-            </p>
-            <p class="text-xs text-gray-400 mt-1">Beberapa saat yang lalu</p>
+    <!-- Link Redirect Modal -->
+    <div id="affiliateModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-sm w-full p-6 text-center shadow-2xl transform transition-all scale-100">
+            <div class="w-14 h-14 bg-teal-100 text-teal-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-1" id="modalTitle">Membuka Produk Affiliate</h3>
+            <p class="text-xs text-gray-500 mb-6" id="modalDesc">Kamu akan diarahkan ke halaman resmi penyedia produk.</p>
+            
+            <div class="flex gap-3">
+                <button onclick="closeModal()" class="flex-1 py-2.5 px-4 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold rounded-xl text-sm transition">
+                    Batal
+                </button>
+                <a id="modalLinkBtn" href="#" target="_blank" onclick="closeModal()" class="flex-1 py-2.5 px-4 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-xl text-sm transition shadow-md shadow-teal-500/20 flex items-center justify-center gap-2">
+                    Lanjutkan <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+            </div>
         </div>
     </div>
 
-    <!-- BAGIAN 5: JAVASCRIPT -->
     <script>
-        // ==============================================================
-        // 🛠️ AREA PENGATURAN PRODUK & NOTIFIKASI (BISA DIEDIT SENDIRI) 🛠️
-        // ==============================================================
+        // Sample Product Database (20+ Items to test pagination > 10 items)
+        const productsData = [
+            { id: 1, title: "Blogging Marketing (BM)", category: "produk-digital", detail: "Detail Ecourse", link: "https://ratakan.com", icon: "fa-solid fa-bag-shopping" },
+            { id: 2, title: "Trik Broadcast WA Anti Blokir (BCWA)", category: "produk-digital", detail: "Detail Ecourse", link: "https://ratakan.com", icon: "fa-solid fa-bag-shopping" },
+            { id: 3, title: "Tiktok Content Mastery (TCM)", category: "konten-kreator", detail: "Detail Ecourse", link: "https://ratakan.com", icon: "fa-solid fa-bag-shopping" },
+            { id: 4, title: "TRIK SUPER LEJITKAN FOLLOWER", category: "konten-kreator", detail: "Detail Ecourse", link: "https://ratakan.com", icon: "fa-solid fa-bag-shopping" },
+            { id: 5, title: "CUAN DOLLAR DARI TIKTOK SERIES", category: "konten-kreator", detail: "Detail Ecourse", link: "https://ratakan.com", icon: "fa-solid fa-bag-shopping" },
+            { id: 6, title: "LANDING PAGE MASTERY", category: "produk-digital", detail: "Detail Ecourse", link: "https://ratakan.com", icon: "fa-solid fa-bag-shopping" },
+            { id: 7, title: "EBOOK NEWBIEPRENEUR", category: "ebook", detail: "Detail Ebook", link: "https://ratakan.com", icon: "fa-solid fa-book" },
+            { id: 8, title: "MEMBANGUN TOKO ONLINE SENDIRI DALAM SEHARI", category: "ebook", detail: "Detail Ebook", link: "https://ratakan.com", icon: "fa-solid fa-book" },
+            { id: 9, title: "PANDUAN BIKIN GAME DENGAN GREENFOOT", category: "ebook", detail: "Detail Ebook", link: "https://ratakan.com", icon: "fa-solid fa-book" },
+            { id: 10, title: "PANDUAN BIKIN APLIKASI ANDROID JILID #1", category: "ebook", detail: "Detail Ebook", link: "https://ratakan.com", icon: "fa-solid fa-book" },
+            
+            // Page 2 items
+            { id: 11, title: "PANDUAN BIKIN APLIKASI ANDROID JILID #2", category: "ebook", detail: "Detail Ebook", link: "https://ratakan.com", icon: "fa-solid fa-book" },
+            { id: 12, title: "EBOOK GRATIS: PANDUAN AFFILIATE UNTUK PEMULA", category: "gratis", detail: "Gratis Download", link: "https://ratakan.com", icon: "fa-solid fa-gift" },
+            { id: 13, title: "CHECKLIST KONTEN VIRAL TIKTOK", category: "gratis", detail: "Gratis Template", link: "https://ratakan.com", icon: "fa-solid fa-gift" },
+            { id: 14, title: "MASTERING CANVA DESAIN GRAFIS", category: "konten-kreator", detail: "Detail Ecourse", link: "https://ratakan.com", icon: "fa-solid fa-bag-shopping" },
+            { id: 15, title: "MANAJEMEN WAKTU & PRODUKTIVITAS", category: "pengembangan-diri", detail: "Detail Ecourse", link: "https://ratakan.com", icon: "fa-solid fa-user-gear" },
+            { id: 16, title: "PUBLIC SPEAKING & PERSUASI BISNIS", category: "pengembangan-diri", detail: "Detail Ecourse", link: "https://ratakan.com", icon: "fa-solid fa-user-gear" },
+            { id: 17, title: "PANDUAN COPYWRITING JUALAN LARIS", category: "ebook", detail: "Detail Ebook", link: "https://ratakan.com", icon: "fa-solid fa-book" },
+            { id: 18, title: "TEMPLATING PROMPT CHATGPT BISNIS", category: "produk-digital", detail: "Detail Prompt Kit", link: "https://ratakan.com", icon: "fa-solid fa-cube" },
+            { id: 19, title: "KURSUS SHOPEE AFFILIATE MASTERY", category: "produk-digital", detail: "Detail Ecourse", link: "https://ratakan.com", icon: "fa-solid fa-bag-shopping" },
+            { id: 20, title: "MINI CLASS: MINDSET JUTAWAN DIGITAL", category: "pengembangan-diri", detail: "Detail Ecourse", link: "https://ratakan.com", icon: "fa-solid fa-user-gear" }
+        ];
 
-        // 1. DATA KATA PENGANTAR PRODUK (Total 9 Produk atau lebih)
-        const produkKatalog = [
+        // Grid Promo Items
+        const gridProducts = [
             {
-                title: "RV Digital Members Affiliate",
-                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", 
-                detailLink: "https://rvdigitalmembers.vercel.app/affiliate?ref=RAYN482",
-                checkoutLink: "https://rvdigitalmembers.vercel.app/?checkout=8a949ff2-f897-4fce-8797-d2dfc4edade5&ref=RAYN482"
+                id: 101,
+                title: "Jual Kembali Produk Yang Kamu Beli",
+                price: "Rp 350.000",
+                originalPrice: "Rp 1.100.000",
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80",
+                link: "https://kontak.link"
             },
             {
-                title: "Tips Rezeki",
-                image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                detailLink: "https://raindigital.vercel.app/tips-rezeki?ref=RAYN482",
-                checkoutLink: "https://rvdigitalmembers.vercel.app/?checkout=5ab8e726-6ee3-48d0-8c99-8247c73b3162&ref=RAYN482"
-            },
-            {
-                title: "Template Desain Medsos",
-                image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                detailLink: "#",
-                checkoutLink: "#"
-            },
-            {
-                title: "Ebook Jago Copywriting",
-                image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                detailLink: "#",
-                checkoutLink: "#"
-            },
-            {
-                title: "Kelas Mahir Canva",
-                image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                detailLink: "#",
-                checkoutLink: "#"
-            },
-            {
-                title: "Kumpulan Prompt AI Master",
-                image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                detailLink: "#",
-                checkoutLink: "#"
-            },
-            {
-                title: "Script Video Pendek TikTok",
-                image: "https://images.unsplash.com/photo-1611162616475-46b635cb6868?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                detailLink: "#",
-                checkoutLink: "#"
-            },
-            {
-                title: "Rahasia FYP Instagram",
-                image: "https://images.unsplash.com/photo-1611262588024-d12430b98920?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                detailLink: "#",
-                checkoutLink: "#"
-            },
-            {
-                title: "Panduan Iklan Facebook",
-                image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                detailLink: "#",
-                checkoutLink: "#"
+                id: 102,
+                title: "Kelas Optimasi Story For Shopee Affiliate",
+                price: "Rp 35.000",
+                originalPrice: "Rp 89.000",
+                image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=500&q=80",
+                link: "https://kontak.link"
             }
         ];
 
-        // 2. DATA NOTIFIKASI PEMBELI (Nama Lengkap & Sesuai Produk)
-        const dataNotifikasi = [
-            { nama: "Budi Santoso", produk: "RV Digital Members Affiliate" },
-            { nama: "Siti Aminah", produk: "Tips Rezeki" },
-            { nama: "Andi Wijaya Kurniawan", produk: "Kelas Mahir Canva" },
-            { nama: "Ayu Lestari", produk: "Rahasia FYP Instagram" },
-            { nama: "Joko Susanto", produk: "Template Desain Medsos" },
-            { nama: "Rina Maharani", produk: "Ebook Jago Copywriting" }
-        ];
+        // App State
+        let currentTab = 'all';
+        let searchQuery = '';
+        let currentPage = 1;
+        const itemsPerPage = 10;
 
-        // ==============================================================
-        // ⚙️ SISTEM & LOGIKA (Tidak perlu diubah)
-        // ==============================================================
-
-        // A. Render Produk ke Grid Halaman
-        const penampungProduk = document.getElementById('product-container');
-        
-        produkKatalog.forEach(produk => {
-            const kartu = document.createElement('div');
-            kartu.className = "bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-1";
-            
-            kartu.innerHTML = `
-                <div class="relative overflow-hidden bg-gray-100">
-                    <img src="${produk.image}" alt="${produk.title}" class="w-full product-img transition-transform duration-500 hover:scale-105" loading="lazy">
-                </div>
-                <div class="p-5 flex-grow">
-                    <h2 class="text-lg font-bold text-gray-800 leading-tight">${produk.title}</h2>
-                </div>
-                <div class="p-5 pt-0 mt-auto flex gap-3">
-                    <a href="${produk.detailLink}" class="flex-1 text-center bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2.5 rounded-xl text-sm font-semibold transition-colors">
-                        Detail
-                    </a>
-                    <a href="${produk.checkoutLink}" class="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-xl text-sm font-semibold shadow-sm transition-colors">
-                        Checkout
-                    </a>
-                </div>
-            `;
-            penampungProduk.appendChild(kartu);
+        // Initialize App
+        document.addEventListener('DOMContentLoaded', () => {
+            renderListProducts();
+            renderGridProducts();
         });
 
-        // B. Logika Sensor Nama & Pop-up Notifikasi
-        const elemenPopup = document.getElementById('sales-popup');
-        const teksNamaPopup = document.getElementById('popup-name');
-        const teksProdukPopup = document.getElementById('popup-product');
-
-        function sensorNama(namaLengkap) {
-            return namaLengkap.split(' ').map(kata => {
-                if (kata.length <= 2) return kata[0] + "*";
-                return kata[0] + "*".repeat(kata.length - 2) + kata[kata.length - 1];
-            }).join(' ');
+        // Filter products based on active tab & search keyword
+        function getFilteredProducts() {
+            return productsData.filter(item => {
+                const matchesTab = (currentTab === 'all') || (item.category === currentTab);
+                const matchesSearch = item.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                                      item.detail.toLowerCase().includes(searchQuery.toLowerCase());
+                return matchesTab && matchesSearch;
+            });
         }
 
-        function jalankanPopup() {
-            const dataAcak = dataNotifikasi[Math.floor(Math.random() * dataNotifikasi.length)];
-            teksNamaPopup.textContent = sensorNama(dataAcak.nama);
-            teksProdukPopup.textContent = dataAcak.produk;
+        // Render List View Products
+        function renderListProducts() {
+            const container = document.getElementById('productList');
+            const filtered = getFilteredProducts();
 
-            elemenPopup.classList.remove('popup-exit');
-            elemenPopup.classList.add('popup-enter');
+            // Calculate pagination
+            const totalPages = Math.ceil(filtered.length / itemsPerPage) || 1;
+            if (currentPage > totalPages) currentPage = totalPages;
+            if (currentPage < 1) currentPage = 1;
 
-            setTimeout(() => {
-                elemenPopup.classList.remove('popup-enter');
-                elemenPopup.classList.add('popup-exit');
-            }, 5000);
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const paginatedItems = filtered.slice(startIndex, startIndex + itemsPerPage);
+
+            // Empty state check
+            if (paginatedItems.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 text-gray-400">
+                        <i class="fa-solid fa-box-open text-4xl mb-2"></i>
+                        <p class="text-sm">Produk tidak ditemukan.</p>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = paginatedItems.map(item => `
+                    <div onclick="openModal('${item.link}', '${item.title}')" 
+                         class="flex items-center justify-between p-3 bg-white rounded-xl hover:bg-teal-50 border border-gray-100 transition-all cursor-pointer group shadow-sm active:scale-[0.99]">
+                        <div class="flex items-center gap-3 min-w-0">
+                            <div class="w-9 h-9 bg-gray-100 group-hover:bg-teal-100 text-gray-700 group-hover:text-teal-700 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors">
+                                <i class="${item.icon} text-sm"></i>
+                            </div>
+                            <div class="truncate">
+                                <h4 class="text-xs font-bold text-gray-800 truncate leading-tight group-hover:text-teal-900">${item.title}</h4>
+                                <p class="text-[11px] text-gray-500 mt-0.5">${item.detail}</p>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-gray-400 text-xs group-hover:translate-x-1 transition-transform flex-shrink-0 pl-2"></i>
+                    </div>
+                `).join('');
+            }
+
+            renderPaginationControls(totalPages);
         }
 
-        setTimeout(() => {
-            jalankanPopup();
-            setInterval(jalankanPopup, 15000);
-        }, 4000);
+        // Render Pagination Numbers
+        function renderPaginationControls(totalPages) {
+            const paginationContainer = document.getElementById('paginationNumbers');
+            const btnPrev = document.getElementById('btnPrev');
+            const btnNext = document.getElementById('btnNext');
 
-        // C. Logika Toggle Menu Mobile (Hamburger)
-        const tombolMenuMobile = document.getElementById('mobile-menu-btn');
-        const wadahMenuMobile = document.getElementById('mobile-menu');
+            btnPrev.disabled = currentPage === 1;
+            btnNext.disabled = currentPage === totalPages || totalPages === 0;
 
-        tombolMenuMobile.addEventListener('click', () => {
-            wadahMenuMobile.classList.toggle('hidden');
-        });
+            let numbersHtml = '';
+            for (let i = 1; i <= totalPages; i++) {
+                const isActive = i === currentPage;
+                numbersHtml += `
+                    <button onclick="goToPage(${i})" 
+                            class="w-7 h-7 rounded-lg text-xs font-bold transition-all ${
+                                isActive 
+                                ? 'bg-teal-600 text-white shadow-sm' 
+                                : 'hover:bg-gray-200 text-gray-600'
+                            }">
+                        ${i}
+                    </button>
+                `;
+            }
+            paginationContainer.innerHTML = numbersHtml;
+        }
+
+        // Change page using arrows
+        function changePage(direction) {
+            currentPage += direction;
+            renderListProducts();
+        }
+
+        // Jump to specific page
+        function goToPage(page) {
+            currentPage = page;
+            renderListProducts();
+        }
+
+        // Handle Search Input
+        function handleSearch() {
+            searchQuery = document.getElementById('searchInput').value;
+            currentPage = 1; // Reset to first page
+            renderListProducts();
+        }
+
+        // Switch Tabs
+        function switchTab(tabName) {
+            currentTab = tabName;
+            currentPage = 1; // Reset to page 1
+
+            // Update Tab Active UI
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('border-teal-600', 'text-teal-700', 'font-bold');
+                btn.classList.add('border-transparent');
+            });
+
+            const activeBtn = document.getElementById(`tab-${tabName}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('border-transparent');
+                activeBtn.classList.add('border-teal-600', 'text-teal-700', 'font-bold');
+            }
+
+            renderListProducts();
+        }
+
+        // Render Grid Products (Lower Cards)
+        function renderGridProducts() {
+            const gridContainer = document.getElementById('gridProductList');
+            gridContainer.innerHTML = gridProducts.map(item => `
+                <div onclick="openModal('${item.link}', '${item.title}')" 
+                     class="bg-white rounded-xl overflow-hidden border border-gray-900 shadow-[3px_3px_0px_#1f2937] hover:translate-y-[-2px] transition-transform cursor-pointer flex flex-col justify-between">
+                    <div>
+                        <div class="h-36 overflow-hidden bg-gray-100 relative">
+                            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-3">
+                            <h4 class="text-xs font-semibold text-gray-800 line-clamp-2 leading-snug min-h-[32px]">${item.title}</h4>
+                        </div>
+                    </div>
+                    <div class="px-3 pb-3 pt-0">
+                        <div class="text-xs font-bold text-gray-900">${item.price}</div>
+                        <div class="text-[10px] text-gray-400 line-through">${item.originalPrice}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Modal Functionality
+        function openModal(link, title) {
+            const modal = document.getElementById('affiliateModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalLinkBtn = document.getElementById('modalLinkBtn');
+
+            if (title) {
+                modalTitle.textContent = title;
+            } else {
+                modalTitle.textContent = "Buka Link Affiliate";
+            }
+
+            modalLinkBtn.href = link;
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('affiliateModal').classList.add('hidden');
+        }
     </script>
 </body>
 </html>
