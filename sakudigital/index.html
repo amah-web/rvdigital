@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SakuDigital - Solusi Tambah Uang Jajan Modal HP</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            purple: '#7c3aed',
+                            indigo: '#4f46e5',
+                            pink: '#ec4899',
+                            dark: '#0f172a'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0f19;
+            color: #f3f4f6;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card-hover:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(168, 85, 247, 0.4);
+            transform: translateY(-4px);
+            transition: all 0.3s ease;
+        }
+        .pulse-glow {
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.4);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-pink-500 selection:text-white">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-purple-700 via-pink-600 to-indigo-700 text-white text-xs sm:text-sm py-2 px-4 text-center font-medium flex items-center justify-center gap-2">
+        <span class="animate-bounce">🔥</span>
+        <span>PROMO SPESIAL: Pendaftaran Member Cuma <strong class="underline decoration-wavy">Rp 15.000</strong> (Diskon 40%)!</span>
+        <a href="#daftar" class="bg-white text-purple-900 font-bold px-2 py-0.5 rounded-full text-xs hover:bg-gray-100 transition">Klaim Promo</a>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center text-white font-black text-xl shadow-lg">
+                    S
+                </div>
+                <span class="text-xl font-extrabold tracking-tight text-white">Saku<span class="text-pink-500">Digital</span></span>
+            </div>
+            
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+                <a href="#keunggulan" class="hover:text-pink-400 transition">Keunggulan</a>
+                <a href="#peluang" class="hover:text-pink-400 transition">Peluang Bisnis</a>
+                <a href="#kalkulator" class="hover:text-pink-400 transition">Simulasi Cuan</a>
+                <a href="#faq" class="hover:text-pink-400 transition">FAQ</a>
+            </nav>
+
+            <div>
+                <a href="#daftar" class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white px-5 py-2.5 rounded-full text-sm font-semibold shadow-lg hover:shadow-pink-500/25 transition duration-300 flex items-center gap-2">
+                    <i class="fa-solid fa-bolt"></i> Join Sekarang
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden">
+        <!-- Background Decorative Glows -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute top-1/3 right-10 w-80 h-80 bg-pink-600/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border-purple-500/30 text-purple-300 text-xs sm:text-sm font-semibold mb-6">
+                <span class="flex h-2 w-2 rounded-full bg-emerald-400 animate-ping"></span>
+                <i class="fa-solid fa-sparkles text-amber-400"></i> Lowongan Bisnis Digital Terbaru 2026
+            </div>
+
+            <!-- Headline -->
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white max-w-4xl mx-auto leading-tight">
+                Tambah Uang Jajan Cuma <span class="gradient-text">Modal HP & Rebahan!</span> 💸✨
+            </h1>
+
+            <p class="mt-6 text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">
+                Bingung cari penghasilan sampingan? Atau mau punya toko sendiri tanpa pusing bikin produk? <strong>SakuDigital</strong> siap jadi tempat belajar dan mesin cuan kamu dari nol!
+            </p>
+
+            <!-- Countdown Timer Card -->
+            <div class="mt-8 max-w-md mx-auto glass-card p-4 rounded-2xl border-pink-500/30 shadow-2xl">
+                <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">⚡ Promo Pendaftaran Berakhir Dalam:</p>
+                <div class="grid grid-cols-4 gap-2 text-center" id="countdown-timer">
+                    <div class="bg-slate-900/80 p-2 rounded-xl border border-slate-800">
+                        <span id="days" class="text-xl sm:text-2xl font-bold text-pink-400">00</span>
+                        <span class="block text-[10px] text-gray-400">Hari</span>
+                    </div>
+                    <div class="bg-slate-900/80 p-2 rounded-xl border border-slate-800">
+                        <span id="hours" class="text-xl sm:text-2xl font-bold text-pink-400">00</span>
+                        <span class="block text-[10px] text-gray-400">Jam</span>
+                    </div>
+                    <div class="bg-slate-900/80 p-2 rounded-xl border border-slate-800">
+                        <span id="minutes" class="text-xl sm:text-2xl font-bold text-pink-400">00</span>
+                        <span class="block text-[10px] text-gray-400">Menit</span>
+                    </div>
+                    <div class="bg-slate-900/80 p-2 rounded-xl border border-slate-800">
+                        <span id="seconds" class="text-xl sm:text-2xl font-bold text-pink-400">00</span>
+                        <span class="block text-[10px] text-gray-400">Detik</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#daftar" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-purple-600 via-pink-600 to-amber-500 text-white font-bold text-base hover:opacity-95 shadow-lg shadow-pink-500/30 transition transform hover:-translate-y-0.5">
+                    🚀 Amankan Slot Promo (Rp 15.000)
+                </a>
+                <a href="#peluang" class="w-full sm:w-auto px-8 py-4 rounded-full glass-card hover:bg-white/10 text-white font-semibold text-base transition">
+                    💡 Lihat Peluang Bisnis
+                </a>
+            </div>
+
+            <!-- Social Proof Pill -->
+            <div class="mt-10 flex flex-wrap items-center justify-center gap-6 text-gray-400 text-xs sm:text-sm">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-circle-check text-emerald-400"></i>
+                    <span>Dipercaya <strong>70.000+ Member</strong></span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-shield-halved text-purple-400"></i>
+                    <span>Terbukti Sejak <strong>2021</strong></span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-id-card-clip text-pink-400"></i>
+                    <span><strong>Tanpa KTP</strong> / Privasi Aman</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="keunggulan" class="py-16 bg-slate-950/60 border-y border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto">
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-white">Kenapa Harus Join <span class="gradient-text">SakuDigital?</span></h2>
+                <p class="mt-3 text-gray-400 text-sm sm:text-base">Sistem bisnis serba otomatis dan bimbingan terarah yang dirancang khusus untuk pemula.</p>
+            </div>
+
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div class="glass-card p-6 rounded-2xl glass-card-hover">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-shield-cat"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Terbukti & Aman</h3>
+                    <p class="text-gray-400 text-sm">Aktif melayani member sejak 2021. Pendaftaran tanpa KTP/dokumen pribadi, 100% aman bagi pelajar & mahasiswa.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card p-6 rounded-2xl glass-card-hover">
+                    <div class="w-12 h-12 rounded-xl bg-pink-500/20 text-pink-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-box-open"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Bahan Jualan Siap Pakai</h3>
+                    <p class="text-gray-400 text-sm">Tak perlu bingung bikin konten. Materi promosi, gambar, dan kata-kata penawaran sudah disediakan (tinggal copas).</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card p-6 rounded-2xl glass-card-hover">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Tutorial Dari Nol</h3>
+                    <p class="text-gray-400 text-sm">Dapat bimbingan eksklusif via Telegram. Lengkap dari cara promosi, melayani pembeli, hingga strategi promosi.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="glass-card p-6 rounded-2xl glass-card-hover">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-wallet"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Keuntungan 100% Milikmu</h3>
+                    <p class="text-gray-400 text-sm">Hasil penjualan langsung masuk ke DANA, GoPay, atau rekening milikmu!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="peluang" class="py-16 md:py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto">
+                <span class="text-xs font-bold uppercase tracking-widest text-pink-500">1 Akses Beribu Peluang</span>
+                <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold text-white">4 Sumber Penghasilan Dari 1 Akun</h2>
+                <p class="mt-3 text-gray-400">Kamu bebas memilih satu atau menjalankan seluruh jalur bisnis ini sekaligus!</p>
+            </div>
+
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Opportunity 1 -->
+                <div class="glass-card p-8 rounded-3xl border border-slate-800 relative overflow-hidden group hover:border-purple-500/50 transition">
+                    <div class="flex items-start gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-indigo-600 text-white flex items-center justify-center text-2xl shrink-0 shadow-lg">
+                            <i class="fa-solid fa-folder-open"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-purple-400 bg-purple-500/10 px-2.5 py-1 rounded-full">Favorit Pemula</span>
+                            <h3 class="text-xl font-bold text-white mt-2">Member Bisnis</h3>
+                            <p class="text-gray-300 text-sm mt-2 leading-relaxed">
+                                Jual ulang bisnis ini. Keuntungan 100% masuk ke dompet digital milikmu!
+                            </p>
+                            <ul class="mt-4 space-y-2 text-xs text-gray-400">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Modal sekali, jual berkali-kali</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Rekomendasi LPM & grup promosi aktif</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Opportunity 2 -->
+                <div class="glass-card p-8 rounded-3xl border border-slate-800 relative overflow-hidden group hover:border-pink-500/50 transition">
+                    <div class="flex items-start gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500 to-rose-600 text-white flex items-center justify-center text-2xl shrink-0 shadow-lg">
+                            <i class="fa-solid fa-hashtag"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-pink-400 bg-pink-500/10 px-2.5 py-1 rounded-full">Demand Tinggi</span>
+                            <h3 class="text-xl font-bold text-white mt-2">Agen Kebutuhan Sosmed</h3>
+                            <p class="text-gray-300 text-sm mt-2 leading-relaxed">
+                                Buka jasa suntik followers, likes, views Instagram, TikTok, dan YouTube. Pasar sangat luas dari online shop hingga influencer!
+                            </p>
+                            <ul class="mt-4 space-y-2 text-xs text-gray-400">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Harga modal agen super murah</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Proses pengerjaan instan & otomatis</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Opportunity 3 -->
+                <div class="glass-card p-8 rounded-3xl border border-slate-800 relative overflow-hidden group hover:border-emerald-500/50 transition">
+                    <div class="flex items-start gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white flex items-center justify-center text-2xl shrink-0 shadow-lg">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full">Kebutuhan Harian</span>
+                            <h3 class="text-xl font-bold text-white mt-2">Agen Pulsa & Kuota Murah</h3>
+                            <p class="text-gray-300 text-sm mt-2 leading-relaxed">
+                                Nikmati harga grosir untuk pulsa, paket data, voucher game, dan token PLN. Cocok dipakai sendiri agar hemat atau dijual ke teman.
+                            </p>
+                            <ul class="mt-4 space-y-2 text-xs text-gray-400">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Bebas transaksi 24 jam</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Margin keuntungan stabil tiap hari</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Opportunity 4 -->
+                <div class="glass-card p-8 rounded-3xl border border-slate-800 relative overflow-hidden group hover:border-amber-500/50 transition">
+                    <div class="flex items-start gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 text-white flex items-center justify-center text-2xl shrink-0 shadow-lg">
+                            <i class="fa-solid fa-palette"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-amber-400 bg-amber-500/10 px-2.5 py-1 rounded-full">Skill Mahal</span>
+                            <h3 class="text-xl font-bold text-white mt-2">Jasa Editing & Produk Digital</h3>
+                            <p class="text-gray-300 text-sm mt-2 leading-relaxed">
+                                Gak bisa ngedit? Tenang! Ada tutorial desain HP dari nol. Kamu bisa buka jasa bikin logo, banner, hingga preset foto.
+                            </p>
+                            <ul class="mt-4 space-y-2 text-xs text-gray-400">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Dilengkapi mentahan/template siap pakai</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Panduan step-by-step ramah pemula</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kalkulator" class="py-16 bg-slate-950 border-y border-slate-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card p-8 rounded-3xl border-purple-500/30">
+                <div class="text-center">
+                    <span class="text-xs font-bold text-pink-400 uppercase tracking-widest">🧮 Hitung Potensi Penghasilanmu</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white mt-2">Simulasi Cuan Harian</h2>
+                    <p class="text-gray-400 text-sm mt-1">Geser slider di bawah untuk melihat estimasi keuntunganmu per bulan!</p>
+                </div>
+
+                <div class="mt-8 space-y-6">
+                    <div>
+                        <div class="flex justify-between text-sm font-semibold mb-2">
+                            <span class="text-gray-300">Estimasi Penjualan per Hari:</span>
+                            <span class="text-pink-400 font-bold" id="sales-count-label">5 Transaksi / Hari</span>
+                        </div>
+                        <input type="range" id="sales-slider" min="1" max="20" value="5" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-pink-500">
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-sm font-semibold mb-2">
+                            <span class="text-gray-300">Rata-rata Keuntungan per Transaksi:</span>
+                            <span class="text-purple-400 font-bold" id="profit-margin-label">Rp 15.000</span>
+                        </div>
+                        <input type="range" id="profit-slider" min="5000" max="50000" step="5000" value="15000" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-purple-500">
+                    </div>
+
+                    <div class="bg-slate-900/90 p-6 rounded-2xl border border-purple-500/30 text-center">
+                        <p class="text-xs text-gray-400 font-medium">ESTIMASI PENGHASILAN BERSIH PER BULAN:</p>
+                        <p class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 mt-2" id="monthly-income-result">
+                            Rp 2.250.000
+                        </p>
+                        <p class="text-[11px] text-gray-400 mt-2">*Hanya dengan modal awal pendaftaran Rp 15.000 sekali seumur hidup!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="daftar" class="py-16 md:py-24 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Pricing Header -->
+            <div class="text-center mb-12">
+                <span class="px-4 py-1.5 rounded-full bg-pink-500/20 text-pink-300 text-xs font-bold tracking-wide uppercase">
+                    💥 Diskon Spesial Hari Ini
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-4">Gabung Sekarang Sebelum Harga Naik</h2>
+                <p class="text-gray-400 mt-2 text-sm sm:text-base">Sekali bayar untuk akses materi & grup seumur hidup tanpa biaya bulanan!</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Promo Summary Box (Left) -->
+                <div class="lg:col-span-5 glass-card p-6 rounded-3xl border-purple-500/40 relative">
+                    <div class="absolute -top-3 right-6 bg-gradient-to-r from-amber-500 to-pink-500 text-white text-[10px] font-black uppercase px-3 py-1 rounded-full shadow">
+                        HEMAT 40%
+                    </div>
+                    
+                    <h3 class="text-lg font-bold text-white mb-2">Paket Member SD Premium</h3>
+                    <div class="my-4">
+                        <span class="text-xs text-gray-400 line-through">Harga Normal: Rp 25.000</span>
+                        <div class="flex items-baseline gap-2 mt-1">
+                            <span class="text-4xl font-black text-emerald-400">Rp 15.000</span>
+                            <span class="text-xs text-gray-400">/ Sekali Bayar</span>
+                        </div>
+                    </div>
+
+                    <!-- Coupon Copy Box -->
+                    <div class="bg-slate-900/90 p-3 rounded-xl border border-slate-800 flex items-center justify-between my-4">
+                        <div>
+                            <span class="block text-[10px] text-gray-400">Kode Kupon Promo:</span>
+                            <span class="font-mono font-bold text-amber-400" id="coupon-code">PROMOSAKU</span>
+                        </div>
+                        <button onclick="copyCoupon()" class="bg-purple-600/30 hover:bg-purple-600/50 text-purple-300 border border-purple-500/40 px-3 py-1.5 rounded-lg text-xs font-semibold transition">
+                            <i class="fa-solid fa-copy mr-1"></i> Salin
+                        </button>
+                    </div>
+
+                    <ul class="space-y-3 text-xs text-gray-300 border-t border-slate-800 pt-4">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Akses grup & materi Telegram seumur hidup</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Bahan promosi & jualan siap posting</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Bimbingan mentor & support komunitas</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Bebas pilih 4 lini bisnis cuan</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Pembayaran: DANA, GoPay, ShopeePay</li>
+                    </ul>
+                </div>
+
+                <!-- Registration Form (Right) -->
+                <div class="lg:col-span-7 glass-card p-6 sm:p-8 rounded-3xl border-pink-500/30 shadow-2xl">
+                    <h3 class="text-xl font-bold text-white flex items-center gap-2 mb-1">
+                        <i class="fa-solid fa-pen-to-square text-pink-400"></i> Formulir Pendaftaran Member
+                    </h3>
+                    <p class="text-xs text-gray-400 mb-6">Isi data diri kamu di bawah ini untuk terhubung langsung ke WhatsApp Admin.</p>
+
+                    <form id="reg-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Nama Lengkap *</label>
+                            <input type="text" id="form-nama" required placeholder="Contoh: Siska Amelia" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-pink-500 transition">
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Username Telegram *</label>
+                                <input type="text" id="form-telegram" required placeholder="@username" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-pink-500 transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Umur *</label>
+                                <input type="number" id="form-umur" required placeholder="Contoh: 19" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-pink-500 transition">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Profesi *</label>
+                                <select id="form-profesi" onchange="toggleProfesiLainnya()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-pink-500 transition">
+                                    <option value="Pelajar">Pelajar</option>
+                                    <option value="Mahasiswa">Mahasiswa</option>
+                                    <option value="Ibu Rumah Tangga">Ibu Rumah Tangga</option>
+                                    <option value="Pekerja/Karyawan">Pekerja/Karyawan</option>
+                                    <option value="Lainnya">Lainnya (Isi Sendiri)</option>
+                                </select>
+                                <!-- Field Input Tambahan Jika Memilih 'Lainnya' -->
+                                <input type="text" id="form-profesi-custom" placeholder="Sebutkan profesi kamu..." class="hidden mt-2 w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-pink-500 transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Asal Kota *</label>
+                                <input type="text" id="form-kota" required placeholder="Contoh: Bandung" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-pink-500 transition">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Pilih Metode Pembayaran E-Wallet *</label>
+                            <div class="grid grid-cols-3 gap-2">
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="payment" value="DANA" checked class="peer sr-only">
+                                    <div class="p-3 text-center bg-slate-900 border border-slate-700 rounded-xl peer-checked:border-pink-500 peer-checked:bg-pink-500/10 text-xs font-semibold text-gray-300 peer-checked:text-pink-400 transition">
+                                        DANA
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="payment" value="GOPAY" class="peer sr-only">
+                                    <div class="p-3 text-center bg-slate-900 border border-slate-700 rounded-xl peer-checked:border-pink-500 peer-checked:bg-pink-500/10 text-xs font-semibold text-gray-300 peer-checked:text-pink-400 transition">
+                                        GOPAY
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="payment" value="SHOPEEPAY" class="peer sr-only">
+                                    <div class="p-3 text-center bg-slate-900 border border-slate-700 rounded-xl peer-checked:border-pink-500 peer-checked:bg-pink-500/10 text-xs font-semibold text-gray-300 peer-checked:text-pink-400 transition">
+                                        SHOPEEPAY
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Readonly Leader Field -->
+                        <div class="bg-slate-900/60 p-3 rounded-xl border border-slate-800 flex items-center justify-between text-xs text-gray-400">
+                            <span>Leader Penanggung Jawab:</span>
+                            <span class="font-semibold text-purple-400">@amah02</span>
+                        </div>
+
+                        <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-bold text-sm shadow-lg shadow-emerald-500/25 transition transform active:scale-95 flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> Kirim Formulir Pendaftaran Via WhatsApp
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-slate-950/80 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-xs font-bold text-amber-400 uppercase tracking-widest">⭐ Testimoni Member</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-2">Apa Kata Mereka Yang Sudah Join?</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Testi 1 -->
+                <div class="glass-card p-6 rounded-2xl">
+                    <div class="flex items-center gap-1 text-amber-400 text-xs mb-3">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 text-sm italic">"Awalnya ragu karena cuma modal 15rb. Pas dicoba resell file digital ternyata laku keras di Telegram! Dalam 3 hari udah balik modal 10x lipat."</p>
+                    <div class="mt-4 flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center font-bold text-xs text-white">N</div>
+                        <div>
+                            <h4 class="text-xs font-bold text-white">Nabila A.</h4>
+                            <span class="text-[10px] text-gray-400">Mahasiswi - Surabaya</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testi 2 -->
+                <div class="glass-card p-6 rounded-2xl">
+                    <div class="flex items-center gap-1 text-amber-400 text-xs mb-3">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 text-sm italic">"Bagus banget buat IRT kayak saya. Bisa sambil momong anak di rumah, jualan kuota sama sosmed panelnya ramah pemula banget tutorialnya."</p>
+                    <div class="mt-4 flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-pink-500 flex items-center justify-center font-bold text-xs text-white">R</div>
+                        <div>
+                            <h4 class="text-xs font-bold text-white">Rina W.</h4>
+                            <span class="text-[10px] text-gray-400">Ibu Rumah Tangga - Semarang</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testi 3 -->
+                <div class="glass-card p-6 rounded-2xl">
+                    <div class="flex items-center gap-1 text-amber-400 text-xs mb-3">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 text-sm italic">"Mentoring di Telegram ramah banget, Kak Amah bener-bener bantu kalau kita kebingungan. Worth it parah dengan harga promo promo 15rb."</p>
+                    <div class="mt-4 flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center font-bold text-xs text-white">F</div>
+                        <div>
+                            <h4 class="text-xs font-bold text-white">Fahri K.</h4>
+                            <span class="text-[10px] text-gray-400">Pelajar SMA - Bogor</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-16">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Sering Ditanyakan (FAQ)</h2>
+                <p class="text-gray-400 text-sm mt-1">Masih bingung? Temukan jawaban cepat di bawah ini.</p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="glass-card rounded-2xl overflow-hidden border border-slate-800">
+                    <button onclick="toggleFaq('faq-1')" class="w-full text-left p-5 text-sm font-semibold text-white flex justify-between items-center focus:outline-none">
+                        <span>Apakah bisnis ini membutuhkan KTP / identitas resmi?</span>
+                        <i id="icon-faq-1" class="fa-solid fa-chevron-down text-pink-400 transition-transform"></i>
+                    </button>
+                    <div id="faq-1" class="hidden px-5 pb-5 text-xs text-gray-400 leading-relaxed">
+                        Sama sekali tidak! Pendaftaran SakuDigital 100% aman dan praktis tanpa KTP. Cocok untuk semua kalangan termasuk pelajar di bawah umur.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="glass-card rounded-2xl overflow-hidden border border-slate-800">
+                    <button onclick="toggleFaq('faq-2')" class="w-full text-left p-5 text-sm font-semibold text-white flex justify-between items-center focus:outline-none">
+                        <span>Apakah ada biaya bulanan atau bayar lagi setelah pendaftaran?</span>
+                        <i id="icon-faq-2" class="fa-solid fa-chevron-down text-pink-400 transition-transform"></i>
+                    </button>
+                    <div id="faq-2" class="hidden px-5 pb-5 text-xs text-gray-400 leading-relaxed">
+                        Tidak ada biaya tersembunyi! Biaya pendaftaran promo Rp 15.000 berlaku sekali bayar untuk akses seumur hidup beserta update materi ke depannya.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="glass-card rounded-2xl overflow-hidden border border-slate-800">
+                    <button onclick="toggleFaq('faq-3')" class="w-full text-left p-5 text-sm font-semibold text-white flex justify-between items-center focus:outline-none">
+                        <span>Saya benar-benar awam, apakah nanti akan diajari?</span>
+                        <i id="icon-faq-3" class="fa-solid fa-chevron-down text-pink-400 transition-transform"></i>
+                    </button>
+                    <div id="faq-3" class="hidden px-5 pb-5 text-xs text-gray-400 leading-relaxed">
+                        Tentu saja! Setelah pendaftaran, kamu langsung dimasukkan ke grup bimbingan Telegram resmi SakuDigital. Semua bahan jualan, teks promosi, dan langkah demi langkah sudah dipandu dari nol.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 py-12 border-t border-slate-800 text-center text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-center gap-2 mb-4">
+                <div class="w-7 h-7 rounded-lg gradient-bg flex items-center justify-center text-white font-bold text-sm">S</div>
+                <span class="text-base font-extrabold text-white">Saku<span class="text-pink-500">Digital</span></span>
+            </div>
+            <p class="max-w-md mx-auto text-gray-400 mb-6">Solusi cerdas menambah penghasilan sampingan modal HP dan rebahan sejak 2021.</p>
+            <p>&copy; 2026 SakuDigital. All rights reserved. Admin WhatsApp: +62 813-2440-9654 | Leader: @amah02</p>
+        </div>
+    </footer>
+
+    <!-- Custom Toast Notification Box -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-slate-900 border border-emerald-500/50 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 transition transform translate-y-20 opacity-0 pointer-events-none">
+        <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+            <i class="fa-solid fa-check"></i>
+        </div>
+        <span id="toast-message" class="text-xs font-semibold">Pesan berhasil dikirim!</span>
+    </div>
+
+    <script>
+        // --- 1. Countdown Timer Logic ---
+        function initCountdown() {
+            const targetDate = new Date('October 11, 2026 23:59:59').getTime();
+
+            const timerInterval = setInterval(() => {
+                const now = new Date().getTime();
+                const difference = targetDate - now;
+
+                if (difference <= 0) {
+                    clearInterval(timerInterval);
+                    document.getElementById('countdown-timer').innerHTML = '<div class="col-span-4 text-pink-400 font-bold py-2">PROMO TELAH BERAKHIR</div>';
+                    return;
+                }
+
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = String(days).padStart(2, '0');
+                document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+            }, 1000);
+        }
+
+        // --- 2. Interactive Income Calculator ---
+        const salesSlider = document.getElementById('sales-slider');
+        const profitSlider = document.getElementById('profit-slider');
+        const salesLabel = document.getElementById('sales-count-label');
+        const profitLabel = document.getElementById('profit-margin-label');
+        const monthlyResult = document.getElementById('monthly-income-result');
+
+        function updateIncomeCalculator() {
+            const sales = parseInt(salesSlider.value);
+            const profit = parseInt(profitSlider.value);
+            
+            salesLabel.innerText = `${sales} Transaksi / Hari`;
+            profitLabel.innerText = `Rp ${profit.toLocaleString('id-ID')}`;
+
+            const dailyIncome = sales * profit;
+            const monthlyIncome = dailyIncome * 30;
+
+            monthlyResult.innerText = `Rp ${monthlyIncome.toLocaleString('id-ID')}`;
+        }
+
+        if(salesSlider && profitSlider) {
+            salesSlider.addEventListener('input', updateIncomeCalculator);
+            profitSlider.addEventListener('input', updateIncomeCalculator);
+        }
+
+        // --- 3. Copy Coupon Code ---
+        function copyCoupon() {
+            const couponText = document.getElementById('coupon-code').innerText;
+            
+            const tempInput = document.createElement('input');
+            tempInput.value = couponText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            showToast('Kode promo PROMOSAKU berhasil disalin!');
+        }
+
+        // --- 4. FAQ Accordion Toggle ---
+        function toggleFaq(id) {
+            const faqContent = document.getElementById(id);
+            const faqIcon = document.getElementById(`icon-${id}`);
+
+            if (faqContent.classList.contains('hidden')) {
+                faqContent.classList.remove('hidden');
+                faqIcon.classList.add('rotate-180');
+            } else {
+                faqContent.classList.add('hidden');
+                faqIcon.classList.remove('rotate-180');
+            }
+        }
+
+        // --- 5. Custom Profession Field Toggle ---
+        function toggleProfesiLainnya() {
+            const select = document.getElementById('form-profesi');
+            const customInput = document.getElementById('form-profesi-custom');
+            if (select.value === 'Lainnya') {
+                customInput.classList.remove('hidden');
+                customInput.required = true;
+                customInput.focus();
+            } else {
+                customInput.classList.add('hidden');
+                customInput.required = false;
+                customInput.value = '';
+            }
+        }
+
+        // --- 6. Registration Form Handler (Redirect to WhatsApp Admin) ---
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const nama = document.getElementById('form-nama').value.trim();
+            const telegram = document.getElementById('form-telegram').value.trim();
+            const umur = document.getElementById('form-umur').value.trim();
+            
+            const profesiSelect = document.getElementById('form-profesi').value;
+            const profesiCustom = document.getElementById('form-profesi-custom').value.trim();
+            const profesi = (profesiSelect === 'Lainnya' && profesiCustom) ? profesiCustom : profesiSelect;
+            
+            const kota = document.getElementById('form-kota').value.trim();
+            
+            const paymentOptions = document.getElementsByName('payment');
+            let paymentMethod = 'DANA';
+            for (const option of paymentOptions) {
+                if (option.checked) {
+                    paymentMethod = option.value;
+                    break;
+                }
+            }
+
+            // Construct formatted WhatsApp message
+            const waMessage = 
+`🫧 FORMAT MEMBER SAKUDIGITAL 🫧
+
+⋮ ⌗ Nama: ${nama}
+⋮ ⌗ Username Telegram: ${telegram}
+⋮ ⌗ Umur: ${umur}
+⋮ ⌗ Profesi: ${profesi}
+⋮ ⌗ Asal Kota: ${kota}
+⋮ ⌗ Leader: @amah02
+⋮ ⌗ Metode Pembayaran: ${paymentMethod}
+⋮ ⌗ Kode Kupon: PROMOSAKU (Rp 15.000)
+
+Halo Admin SakuDigital, saya ingin mengamankan slot promo pendaftaran member. Mohon info nomor pembayaran ${paymentMethod} atas nama Ummi Salamah. Terima kasih!`;
+
+            const adminPhone = "6281324409654";
+            const encodedUrl = `https://wa.me/${adminPhone}?text=${encodeURIComponent(waMessage)}`;
+
+            showToast('Mengarahkan ke WhatsApp Admin...');
+            
+            setTimeout(() => {
+                window.open(encodedUrl, '_blank');
+            }, 800);
+        }
+
+        // --- 7. Custom Toast Helper ---
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+
+            toastMsg.innerText = message;
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+            }, 3000);
+        }
+
+        // Initialize on load
+        window.onload = function() {
+            initCountdown();
+            updateIncomeCalculator();
+        };
+    </script>
+</body>
+</html>
