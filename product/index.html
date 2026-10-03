@@ -128,20 +128,44 @@
             <button onclick="switchTab('all')" id="tab-all" class="tab-btn px-3.5 py-3.5 whitespace-nowrap border-b-2 border-purple-400 text-white font-bold transition-all">
                 Beranda
             </button>
-            <button onclick="switchTab('bisnis')" id="tab-gratis" class="tab-btn px-3.5 py-3.5 whitespace-nowrap border-b-2 border-transparent text-purple-300 hover:text-white transition-all">
+            <button onclick="switchTab('aplikasi-premium')" id="tab-aplikasi-premium" class="tab-btn px-3.5 py-3.5 whitespace-nowrap border-b-2 border-transparent text-purple-300 hover:text-white transition-all">
+                Aplikasi Premium
+            </button>
+            <button onclick="switchTab('bisnis')" id="tab-bisnis" class="tab-btn px-3.5 py-3.5 whitespace-nowrap border-b-2 border-transparent text-purple-300 hover:text-white transition-all">
                 Bisnis
             </button>
-            <button onclick="switchTab('gratis')" id="tab-ebook" class="tab-btn px-3.5 py-3.5 whitespace-nowrap border-b-2 border-transparent text-purple-300 hover:text-white transition-all">
+            <button onclick="switchTab('gratis')" id="tab-gratis" class="tab-btn px-3.5 py-3.5 whitespace-nowrap border-b-2 border-transparent text-purple-300 hover:text-white transition-all">
                 Gratis 
             </button>
-            <button onclick="switchTab('produk-digital')" id="tab-produk-digital" class="tab-btn px-3.5 py-3.5 whitespace-nowrap border-b-2 border-transparent text-purple-300 hover:text-white transition-all">
-                Produk Digital
+            <button onclick="switchTab('jasa')" id="tab-jasa" class="tab-btn px-3.5 py-3.5 whitespace-nowrap border-b-2 border-transparent text-purple-300 hover:text-white transition-all">
+                Jasa
+            </button>
+            <button onclick="switchTab('kesehatan')" id="tab-kesehatan" class="tab-btn px-3.5 py-3.5 whitespace-nowrap border-b-2 border-transparent text-purple-300 hover:text-white transition-all">
+                Kesehatan 
+            </button>
+            <button onclick="switchTab('keuangan')" id="tab-keuangan" class="tab-btn px-3.5 py-3.5 whitespace-nowrap border-b-2 border-transparent text-purple-300 hover:text-white transition-all">
+                Keuangan
             </button>
             <button onclick="switchTab('konten-kreator')" id="tab-konten-kreator" class="tab-btn px-3.5 py-3.5 whitespace-nowrap border-b-2 border-transparent text-purple-300 hover:text-white transition-all">
                 Konten Kreator
             </button>
+            <button onclick="switchTab('lisfestyle')" id="tab-lifestyle" class="tab-btn px-3.5 py-3.5 whitespace-nowrap border-b-2 border-transparent text-purple-300 hover:text-white transition-all">
+                Lifestyle
+            </button>
+            <button onclick="switchTab('parenting')" id="tab-parenting" class="tab-btn px-3.5 py-3.5 whitespace-nowrap border-b-2 border-transparent text-purple-300 hover:text-white transition-all">
+                Parenting
+            </button>
+            <button onclick="switchTab('pendidikan')" id="tab-pendidikan" class="tab-btn px-3.5 py-3.5 whitespace-nowrap border-b-2 border-transparent text-purple-300 hover:text-white transition-all">
+                Pendidikan 
+            </button>
             <button onclick="switchTab('pengembangan-diri')" id="tab-pengembangan-diri" class="tab-btn px-3.5 py-3.5 whitespace-nowrap border-b-2 border-transparent text-purple-300 hover:text-white transition-all">
                 Pengembangan Diri
+            </button>
+            <button onclick="switchTab('relationship')" id="tab-relationship" class="tab-btn px-3.5 py-3.5 whitespace-nowrap border-b-2 border-transparent text-purple-300 hover:text-white transition-all">
+                Relationship 
+            </button>
+            <button onclick="switchTab('teknologi')" id="tab-teknologi" class="tab-btn px-3.5 py-3.5 whitespace-nowrap border-b-2 border-transparent text-purple-300 hover:text-white transition-all">
+                Teknologi
             </button>
         </div>
     </nav>
@@ -296,12 +320,20 @@
 
         // 3. PENGATURAN KATEGORI (Opsi Apakah Grid Promo Tampil di Kategori Ini)
         const categorySettings = {
-            'all': { name: 'Home / Semua Produk', showGrid: true },
+            'all': { name: 'Beranda / Semua Produk', showGrid: true },
+            'aplikasi-premium': { name: 'Aplikasi Premium & Media Sosial', showGrid: false },
+            'bisnis': { name: 'Bisnis & Kewirausahaan', showGrid: false },
             'gratis': { name: 'Produk Gratis', showGrid: false },
-            'ebook': { name: 'Koleksi Ebook', showGrid: true },
-            'produk-digital': { name: 'E-Course & Tools Digital', showGrid: true },
-            'konten-kreator': { name: 'Tools Konten Kreator', showGrid: true },
-            'pengembangan-diri': { name: 'Pengembangan Diri', showGrid: false }
+            'jasa': { name: 'Jasa & Layanan Profesional', showGrid: false },
+            'kesehatan': { name: 'Kesehatan & Kebugaran', showGrid: false },
+            'keuangan': { name: 'Keuangan & Investasi', showGrid: false },
+            'konten-kreator': { name: 'Kreatif & Desain Visual', showGrid: false },
+            'lifestyle': { name: 'Gaya Hidup & Hobi', showGrid: false },
+            'parenting': { name: 'Parenting & Keluarga', showGrid: false },
+            'pendidikan': { name: 'Pendidikan', showGrid: false },
+            'pengembangan-diri': { name: 'Pengembangan Diri & Spiritual', showGrid: false },
+            'relationship': { name: 'Hubungan & Komunikasi', showGrid: false },
+            'teknologi': { name: 'Teknologi & Produktivitas', showGrid: false }
         };
 
         // 4. DATABASE NOTIFIKASI PEMBELIAN BERJALAN (Bisa Di-edit Manual)
