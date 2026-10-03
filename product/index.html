@@ -126,13 +126,13 @@
     <nav class="sticky top-0 z-30 mt-6 bg-purple-950/80 dark:bg-purple-950/90 backdrop-blur-md shadow-lg border-y border-purple-800/40">
         <div class="max-w-md mx-auto flex items-center overflow-x-auto no-scrollbar px-2 text-xs font-semibold text-purple-200">
             <button onclick="switchTab('all')" id="tab-all" class="tab-btn px-3.5 py-3.5 whitespace-nowrap border-b-2 border-purple-400 text-white font-bold transition-all">
-                Home
+                Beranda
             </button>
-            <button onclick="switchTab('gratis')" id="tab-gratis" class="tab-btn px-3.5 py-3.5 whitespace-nowrap border-b-2 border-transparent text-purple-300 hover:text-white transition-all">
-                Gratis
+            <button onclick="switchTab('bisnis')" id="tab-gratis" class="tab-btn px-3.5 py-3.5 whitespace-nowrap border-b-2 border-transparent text-purple-300 hover:text-white transition-all">
+                Bisnis
             </button>
-            <button onclick="switchTab('ebook')" id="tab-ebook" class="tab-btn px-3.5 py-3.5 whitespace-nowrap border-b-2 border-transparent text-purple-300 hover:text-white transition-all">
-                Ebook
+            <button onclick="switchTab('gratis')" id="tab-ebook" class="tab-btn px-3.5 py-3.5 whitespace-nowrap border-b-2 border-transparent text-purple-300 hover:text-white transition-all">
+                Gratis 
             </button>
             <button onclick="switchTab('produk-digital')" id="tab-produk-digital" class="tab-btn px-3.5 py-3.5 whitespace-nowrap border-b-2 border-transparent text-purple-300 hover:text-white transition-all">
                 Produk Digital
@@ -149,18 +149,7 @@
     <!-- Main Container -->
     <main class="max-w-md mx-auto px-4 mt-6 space-y-6">
 
-        <!-- Controls: Option Toggles (Visual Customization) -->
-        <div id="displayControls" class="bg-purple-900/30 border border-purple-800/40 rounded-xl p-3 text-xs flex items-center justify-between gap-2 text-purple-200">
-            <div class="flex items-center gap-2">
-                <i class="fa-solid fa-sliders text-purple-400"></i>
-                <span class="font-medium">Gambar Thumbnail List:</span>
-            </div>
-            <button onclick="toggleListImages()" id="btnToggleImages" class="px-2.5 py-1 bg-purple-700/60 hover:bg-purple-600 text-white font-semibold rounded-lg transition">
-                Tampilkan Gambar
-            </button>
-        </div>
-
-        <!-- Main Product Card Box (Konsep Gambar Utama) -->
+             <!-- Main Product Card Box (Konsep Gambar Utama) -->
         <section id="mainCardBox" class="bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-100 rounded-2xl p-4 sm:p-5 border-shadow-purple transition-colors relative">
             
             <div class="flex items-center justify-between mb-3">
@@ -222,17 +211,16 @@
     </main>
 
     <!-- Sales Toast Pop-up Notification (Notifikasi Pembelian Otomatis) -->
-    <div id="salesToast" class="fixed bottom-4 left-4 right-4 sm:left-4 sm:right-auto sm:max-w-xs z-50 transition-all duration-500 transform translate-y-20 opacity-0 pointer-events-none">
+    <div id="salesToast" class="fixed bottom-3 left-3 right-3 sm:left-4 sm:right-auto sm:max-w-sm z-50 transition-all duration-500 transform translate-y-20 opacity-0 pointer-events-none">
         <div class="bg-slate-900/95 text-white border border-purple-500/40 p-3 rounded-2xl shadow-2xl backdrop-blur-md flex items-center gap-3">
             <div class="w-9 h-9 rounded-full bg-purple-600/30 border border-purple-400 flex items-center justify-center text-purple-300 shrink-0">
                 <i class="fa-solid fa-bag-shopping text-sm"></i>
             </div>
             <div class="min-w-0 flex-1">
-                <p class="text-[11px] text-purple-300 font-semibold truncate" id="toastBuyerName">Uxxi Sxxxxxh</p>
-                <p class="text-[11px] text-slate-200 font-medium leading-tight truncate" id="toastProductName">Baru saja membeli 'Blogging Marketing'</p>
-                <span class="text-[9px] text-slate-400" id="toastTime">1 menit yang lalu</span>
+                <p class="text-[11px] text-purple-300 font-semibold leading-tight whitespace-normal break-words" id="toastBuyerName">Uxxi Sxxxxxh</p>
+                <p class="text-[11px] text-slate-200 font-medium leading-tight mt-0.5 whitespace-normal break-words" id="toastProductName">Sudah membeli 'Digifaster'</p>
             </div>
-            <button onclick="hideSalesToast()" class="text-slate-400 hover:text-white text-xs p-1">
+            <button onclick="hideSalesToast()" class="text-slate-400 hover:text-white text-xs p-1 shrink-0 self-start">
                 <i class="fa-solid fa-xmark"></i>
             </button>
         </div>
@@ -318,11 +306,11 @@
 
         // 4. DATABASE NOTIFIKASI PEMBELIAN BERJALAN (Bisa Di-edit Manual)
         const buyerNotifications = [
-            { buyer: "Uxxi Sxxxxxh", product: "Blogging Marketing (BM)", time: "2 menit yang lalu" },
-            { buyer: "Axxi Pxxxxa", product: "Trik Broadcast WA Anti Blokir", time: "5 menit yang lalu" },
-            { buyer: "Rxxa Kxxxxa", product: "Ebook Newbiepreneur", time: "12 menit yang lalu" },
-            { buyer: "Dxxi Sxxxxo", product: "Tiktok Content Mastery", time: "18 menit yang lalu" },
-            { buyer: "Bxxg Fxxxxi", product: "Shopee Affiliate Mastery", time: "25 menit yang lalu" }
+            { buyer: "Uxxi Sxxxxxh", product: "Blogging Marketing (BM)" },
+            { buyer: "Axxi Pxxxxa", product: "Trik Broadcast WA Anti Blokir" },
+            { buyer: "Rxxa Kxxxxa", product: "Ebook Newbiepreneur" },
+            { buyer: "Dxxi Sxxxxo", product: "Tiktok Content Mastery" },
+            { buyer: "Bxxg Fxxxxi", product: "Shopee Affiliate Mastery" }
         ];
 
         // State Aplikasi
@@ -535,11 +523,13 @@
                 <a href="${item.link}" target="_self" 
                    class="bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-slate-900 dark:border-slate-700 border-shadow-light dark:border-shadow-purple hover:-translate-y-1 transition-transform flex flex-col justify-between group">
                     <div>
-                        <div class="h-32 sm:h-36 overflow-hidden bg-slate-100 dark:bg-slate-800 relative">
+                        <!-- Gambar Persegi Panjang Aspect Ratio 16:9 -->
+                        <div class="w-full aspect-video overflow-hidden bg-slate-100 dark:bg-slate-800 relative">
                             <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                         </div>
                         <div class="p-3">
-                            <h4 class="text-xs font-bold text-slate-800 dark:text-slate-100 line-clamp-2 leading-tight">${item.title}</h4>
+                            <!-- Judul Teks Penuh Tanpa Terpotong -->
+                            <h4 class="text-xs font-bold text-slate-800 dark:text-slate-100 leading-snug whitespace-normal break-words">${item.title}</h4>
                         </div>
                     </div>
                     <div class="px-3 pb-3 pt-0">
@@ -556,8 +546,7 @@
             const data = buyerNotifications[notificationIndex];
 
             document.getElementById('toastBuyerName').textContent = data.buyer;
-            document.getElementById('toastProductName').textContent = `Baru saja membeli '${data.product}'`;
-            document.getElementById('toastTime').textContent = data.time;
+            document.getElementById('toastProductName').textContent = `Sudah membeli '${data.product}'`;
 
             toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
             toast.classList.add('translate-y-0', 'opacity-100');
